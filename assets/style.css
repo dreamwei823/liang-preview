@@ -523,3 +523,12 @@ p,li,figcaption,blockquote,dd{text-wrap:pretty}
 /* 2026-11-19 新書發表 */
 .book-launch{font-size:15px;color:var(--ink);margin:26px 0 0;padding-top:16px;border-top:1px solid var(--line);max-width:30em}
 .book-launch .preview-flag{display:block;margin-top:4px}
+
+/* 2026-11-19 收藏頁（新增一區收藏） */
+.coll-page{margin-top:56px}
+.coll-page .lead .preview-flag{display:block;margin-top:8px;color:#B8AD9E}
+.coll-series{font-family:var(--serif);font-weight:500;font-size:24px;margin:72px 0 28px;padding-top:20px;border-top:1px solid #4A443D}
+.coll-series:first-of-type{margin-top:8px}
+.coll-series a{color:var(--bg);text-decoration:none}
+.coll-series a:hover{text-decoration:underline;text-underline-offset:.3em;text-decoration-thickness:1px}
+@media (max-width:700px){.coll-page{margin-top:36px}.coll-series{font-size:21px;margin-top:56px}}
