@@ -532,3 +532,9 @@ p,li,figcaption,blockquote,dd{text-wrap:pretty}
 .coll-series a{color:var(--bg);text-decoration:none}
 .coll-series a:hover{text-decoration:underline;text-underline-offset:.3em;text-decoration-thickness:1px}
 @media (max-width:700px){.coll-page{margin-top:36px}.coll-series{font-size:21px;margin-top:56px}}
+
+/* 2026-11-19 手機選單六項＋語言膠囊同一行；收藏頁系列名照 Grok 級距 */
+@media (max-width:700px){.nav{gap:0 14px}}
+.collected .coll-series{font-size:24px;line-height:1.5}
+@media (max-width:700px){.collected .coll-series{font-size:21px}}
+/* 選單六項一行 */
