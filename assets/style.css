@@ -515,3 +515,7 @@ p,li,figcaption,blockquote,dd{text-wrap:pretty}
 .book-cover{margin:0}
 .book-cover img{display:block;width:100%;height:auto;box-shadow:0 1px 2px rgba(46,42,38,.12),0 10px 28px rgba(46,42,38,.14)}
 @media (max-width:700px){.book-in{grid-template-columns:1fr;gap:28px}.book-cover{width:58%;max-width:220px}}
+
+/* 2026-11-19 手機長文不左右對齊（中英混排會撐出大字距）；桌機首頁名字放大 */
+@media (max-width:700px){.fulltext p{text-align:start}}
+@media (min-width:701px){.hero .name{font-size:56px;letter-spacing:.3em;line-height:1.2;margin-bottom:14px}html[lang="en"] .hero .name,html[lang="de"] .hero .name,html[lang="fr"] .hero .name{font-size:44px;letter-spacing:.03em}}
