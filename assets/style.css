@@ -257,3 +257,14 @@ html[lang="de"] .reviews blockquote::after{content:"“"}
   .nav .lang{flex-basis:100%}
   .page-head:has(.speed){padding-top:36px}
 }
+
+/* 2026-11-18 設計總監修改單（暫定值，待橘哥與畫家確認）：
+   ①作品頁第一屏就看得到第一張畫（桌機也套用）②單件作品資料欄的內容字放大、加深 */
+#walk .series:first-child{padding-top:48px}
+#walk .series:first-child .series-head + .walk-item{margin-top:40px}
+.page-head:has(.speed){padding-top:64px}
+.fields dd{font-size:15px;color:var(--ink)}
+.fields dd.tbc{color:var(--ink-2)}
+@media (max-width:700px){
+  .page-head:has(.speed){padding-top:36px}
+}
