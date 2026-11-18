@@ -538,3 +538,12 @@ p,li,figcaption,blockquote,dd{text-wrap:pretty}
 .collected .coll-series{font-size:24px;line-height:1.5}
 @media (max-width:700px){.collected .coll-series{font-size:21px}}
 /* 選單六項一行 */
+
+/* 2026-11-19 手機：選單七項後，語言鈕放右上角（跟名字同一行），選單自己一行 */
+@media (max-width:700px){
+  .site-head{position:relative}
+  .nav .lang.js{position:absolute;top:18px;right:var(--gut);margin:0}
+  .nav .lang.js.open{position:static;flex-basis:100%;margin-top:4px}
+  .home .site-head{padding-top:58px}
+  .nav{gap:0 13px}
+}
