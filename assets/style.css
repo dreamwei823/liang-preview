@@ -233,3 +233,9 @@ html[lang="en"] .reviews blockquote::after{content:"”"}
   .pn{flex-direction:column}
   .pn .next{text-align:left;margin-left:0}
 }
+
+/* 2026-11-18 手機作品頁：第一張畫往上提，讓第一屏就看得到畫（只影響 700px 以下、第一個系列的開頭） */
+@media (max-width:700px){
+  #walk .series:first-child{padding-top:48px}
+  #walk .series:first-child .series-head + .walk-item{margin-top:40px}
+}
