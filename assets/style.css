@@ -441,3 +441,71 @@ p,li,figcaption,blockquote,dd{text-wrap:pretty}
   html[lang="ko"] .hero .name{letter-spacing:.14em}
   .reel-hint{font-size:12px;letter-spacing:.06em}
 }
+
+/* 2026-11-18 書的出版資料 */
+.book-meta{font-size:13px;letter-spacing:.04em;color:var(--ink-2);margin:0 0 14px}
+.book-desc{font-family:var(--serif);font-size:19px;line-height:1.8;color:var(--ink);margin:0 0 30px;max-width:30em}
+
+/* ===== 2026-11-18 Grok 設計部層次（回覆_design_梁至青選單與文字層次_20261118.md）：每層至少差 1.25 倍，只用大小、字重、深淺 ===== */
+/* ① 選單三級：作品｜評論・關於・動態｜聯絡 */
+.site-head{padding-top:36px}
+.brand{font-size:24px}
+.nav{gap:28px}
+.nav > a{color:var(--ink-2);font-size:15px;font-weight:400}
+.nav > a[href$="works.html"]{color:var(--ink);font-size:17px;font-weight:500;margin-right:16px}
+.nav > a[href$="contact.html"]{color:var(--ink);margin-left:28px}
+.nav > a[aria-current="page"]{color:var(--ink);text-decoration-line:underline;text-decoration-color:var(--ink);text-decoration-thickness:1px;text-underline-offset:.45em}
+.lang.js{margin-left:12px}
+.lang.js a,.lang.js span[aria-hidden]{display:none}
+.lang.js span[aria-current]{cursor:pointer;border:1px solid var(--line);padding:3px 10px;border-radius:999px;color:var(--ink-2);font-size:13px;white-space:nowrap}
+.lang.js span[aria-current]::after{content:" ▾";font-size:10px}
+.lang.js.open{gap:6px 12px;align-items:center}
+.lang.js.open a{display:inline}
+@media (max-width:700px){
+  .nav{gap:0 20px}
+  .nav > a{font-size:13px;padding:12px 0}
+  .nav > a[href$="works.html"]{font-size:14px;margin-right:0}
+  .nav > a[href$="contact.html"]{margin-left:0}
+  .lang.js{margin-left:auto}
+  .lang.js span[aria-current]{font-size:12px}
+  .hero .name{margin-bottom:8px}
+  .reel-hint{margin:0 0 28px}
+}
+/* ② 文字頁層級：13 → 17 → 21 → 30 → 44 */
+.essay h1,.page-head h1{font-size:44px;line-height:1.4;margin-bottom:12px}
+.essay .meta{font-size:13px;line-height:1.7;margin-bottom:48px}
+.essay .fulltext p,.text p{font-size:17px;line-height:1.9;margin:0 0 1.25em}
+.essay .fulltext h2.sec,.text h2{font-family:var(--serif);font-weight:500;font-size:24px;line-height:1.5;margin:96px 0 20px;padding-top:20px;position:relative}
+.essay .fulltext h2.sec::before,.text h2::before{content:"";position:absolute;top:0;left:0;width:40px;height:1px;background:var(--ink)}
+.essay .fulltext p.epi{font-family:var(--serif);font-size:16px;line-height:1.8;color:var(--ink-2);margin:0 0 32px;padding-left:2em;text-align:left}
+.essay blockquote{font-size:24px;margin:56px 0}
+.essay .essay-note,.essay .fulltext-note{font-size:13px;line-height:1.7;margin-top:64px}
+@media (max-width:700px){
+  .essay h1,.page-head h1{font-size:30px}
+  .essay .meta{margin-bottom:40px}
+  .essay .fulltext h2.sec,.text h2{font-size:21px;margin-top:72px}
+  .essay .fulltext p.epi{font-size:15px}
+  .essay blockquote{font-size:20px;margin:40px 0}
+}
+/* ③ 首頁三個停點：輪播放大、全屏一句、年表色帶；其他收緊 */
+@media (max-width:700px){.reel img{max-height:52vh;object-position:center}}
+.all-coll{margin:48px 0 0;font-size:15px}
+.all-coll a{color:var(--bg);text-decoration-color:#B8AD9E;text-underline-offset:.35em}
+.all-coll a::after{content:" →"}
+.section:has(> .quote){min-height:72vh}
+.section:has(> .quote) blockquote{font-size:40px;line-height:1.7}
+@media (max-width:700px){.section:has(> .quote) blockquote{font-size:30px}}
+.doors .q{font-size:18px}
+@media (max-width:700px){.doors .q{font-size:16px}.doors a{padding:14px 0}}
+.feature.book-band{background:transparent}
+.feature.book-band .in{padding-top:56px;padding-bottom:58px}
+.feature.book-band h2{font-size:28px}
+@media (max-width:700px){.feature.book-band h2{font-size:24px}.feature.book-band .in{padding-top:40px;padding-bottom:42px}}
+.portal{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.portal .big{color:var(--ink)}
+.portal .sm{color:var(--ink-2)}
+.road-sec{background:#E6DED2;margin-top:110px;padding-top:96px;padding-bottom:96px}
+.road-sec .road .nm{font-size:24px}
+.road-sec .road a{padding-top:22px;padding-bottom:22px}
+.ways h3{font-size:19px}
+.ways p{font-size:14px}
