@@ -416,3 +416,7 @@ p,li,figcaption,blockquote,dd{text-wrap:pretty}
 /* 2026-11-18 動態頁系列清單 */
 .series-list{margin-top:26px}
 .film-empty{aspect-ratio:auto;padding:44px 24px}
+
+/* 2026-11-18 德法文長字：窄欄用連字號斷，不硬切 */
+:lang(de) .coll .by,:lang(de) .coll .c,:lang(fr) .coll .by,:lang(fr) .coll .c,:lang(en) .coll .by{hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
+:lang(de) .coll .c .t,:lang(fr) .coll .c .t,:lang(en) .coll .c .t{overflow-wrap:break-word}
