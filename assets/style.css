@@ -374,3 +374,22 @@ dd .sold::before{margin-left:0}
 .fulltext-note{display:none;margin-top:40px}
 html:not([lang="zh-Hant"]):not([lang="zh-Hans"]) .fulltext-note{display:block}
 .crit-title{font-family:var(--serif);font-weight:500;font-size:22px;line-height:1.8;margin:0 0 14px}
+
+/* 2026-11-18 近況＋IG 傳送門 */
+.news-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.news-list li{display:grid;grid-template-columns:5em 6em 1fr;gap:16px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--line)}
+.news-list .d{font-size:14px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.news-list .k{font-size:13px;letter-spacing:.1em;color:var(--ink-2)}
+.news-list .h{font-family:var(--serif);font-weight:500;font-size:19px;line-height:1.6;color:var(--ink)}
+.portal{display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin-top:44px;padding:30px 34px;background:var(--ink);color:var(--bg);text-decoration:none}
+.portal .big{font-family:var(--serif);font-weight:500;font-size:clamp(24px,3vw,36px);color:var(--bg)}
+.portal .big::after{content:" →"}
+.portal .sm{font-size:14px;color:#D9D0C3}
+.portal:hover .big{text-decoration:underline;text-underline-offset:.24em;text-decoration-thickness:1px}
+@media (max-width:700px){.news-list li{grid-template-columns:3.4em 1fr;gap:4px 12px}.news-list .h{grid-column:1/-1;font-size:17px}.portal{padding:24px 22px;margin-top:32px}}
+
+/* 2026-11-18 手機斷字：作品名整個不拆，段落結尾不留殘字 */
+.t,.work-info h1,.cell .cap b,.pn .t,.fields div:first-child dd,.doors .k{word-break:keep-all;overflow-wrap:break-word}
+.nb{white-space:nowrap}
+h1,h2,h3{text-wrap:balance}
+p,li,figcaption,blockquote,dd{text-wrap:pretty}

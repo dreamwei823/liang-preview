@@ -58,3 +58,26 @@
     box.addEventListener('click',function(e){if(e.target===box||e.target.classList.contains('inner'))close();});
   }
 })();
+
+/* 2026-11-18 不留殘字：每段結尾幾個字綁在一起，手機窄欄不會最後一行只剩一兩個字 */
+(function(){
+  var CJK=/[぀-ヿ㐀-鿿]/, PUNCT=/[\s」』）》〉】。，、！？：；…—．.,!?:;)\]"'”’]/;
+  document.querySelectorAll('p,li,h1,h2,h3,blockquote,figcaption,dd,.q,.by,.sm,.h').forEach(function(el){
+    if(el.querySelector('p,li,ul,ol,dl,table,img,figure,blockquote,div,.nb'))return;
+    if((el.textContent||'').trim().length<8)return;
+    var w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null),n,last=null;
+    while((n=w.nextNode())){if(n.nodeValue.trim())last=n;}
+    if(!last)return;
+    var s=last.nodeValue.replace(/\s+$/,'');
+    if(CJK.test(s.slice(-8))){
+      var i=s.length,c=0;
+      while(i>0&&c<3){i--;if(!PUNCT.test(s.charAt(i)))c++;}
+      if(s.length-i<2)return;
+      var sp=document.createElement('span');sp.className='nb';sp.textContent=s.slice(i);
+      last.nodeValue=s.slice(0,i);last.parentNode.insertBefore(sp,last.nextSibling);
+    }else{
+      var j=s.lastIndexOf(' ');
+      if(j>0&&s.length-j<=14)last.nodeValue=s.slice(0,j)+' '+s.slice(j+1);
+    }
+  });
+})();
