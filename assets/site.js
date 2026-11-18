@@ -59,9 +59,13 @@
   }
 })();
 
-/* 2026-11-18 不留殘字：每段結尾幾個字綁在一起，手機窄欄不會最後一行只剩一兩個字 */
+/* 2026-11-18 不留殘字：作品名的「-1」不跟前面拆開；每段結尾幾個字綁在一起，手機窄欄不會最後一行只剩一兩個字 */
 (function(){
   var CJK=/[぀-ヿ㐀-鿿]/, PUNCT=/[\s」』）》〉】。，、！？：；…—．.,!?:;)\]"'”’]/;
+  document.querySelectorAll('.t,.cap b,.work-info h1,.fields dd,title').forEach(function(el){
+    var w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null),n;
+    while((n=w.nextNode())){if(/-\d/.test(n.nodeValue))n.nodeValue=n.nodeValue.replace(/-(?=\d)/g,'-⁠');}
+  });
   document.querySelectorAll('p,li,h1,h2,h3,blockquote,figcaption,dd,.q,.by,.sm,.h').forEach(function(el){
     if(el.querySelector('p,li,ul,ol,dl,table,img,figure,blockquote,div,.nb'))return;
     if((el.textContent||'').trim().length<8)return;
@@ -69,11 +73,16 @@
     while((n=w.nextNode())){if(n.nodeValue.trim())last=n;}
     if(!last)return;
     var s=last.nodeValue.replace(/\s+$/,'');
-    if(CJK.test(s.slice(-8))){
+    if(CJK.test(s.slice(-8))||CJK.test((el.textContent||'').trim().slice(-8))){
       var i=s.length,c=0;
       while(i>0&&c<3){i--;if(!PUNCT.test(s.charAt(i)))c++;}
+      var sp=document.createElement('span');sp.className='nb';
+      var prev=last.previousSibling;
+      if(c<3&&i===0&&prev&&prev.nodeType===1&&last.parentNode===el&&(prev.textContent||'').length<=8){
+        el.insertBefore(sp,prev);sp.appendChild(prev);sp.appendChild(last);return;
+      }
       if(s.length-i<2)return;
-      var sp=document.createElement('span');sp.className='nb';sp.textContent=s.slice(i);
+      sp.textContent=s.slice(i);
       last.nodeValue=s.slice(0,i);last.parentNode.insertBefore(sp,last.nextSibling);
     }else{
       var j=s.lastIndexOf(' ');

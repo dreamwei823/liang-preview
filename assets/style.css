@@ -393,3 +393,10 @@ html:not([lang="zh-Hant"]):not([lang="zh-Hans"]) .fulltext-note{display:block}
 .nb{white-space:nowrap}
 h1,h2,h3{text-wrap:balance}
 p,li,figcaption,blockquote,dd{text-wrap:pretty}
+
+/* 2026-11-18 已被收藏區：手機兩欄不撐破版面（日文、德文會左右溢出），作品名自己一行 */
+.coll{grid-template-columns:repeat(4,minmax(0,1fr))}
+.coll li{min-width:0}
+.coll .c,.coll .by{overflow-wrap:anywhere}
+.coll .c .t{display:block;margin-right:0;overflow-wrap:anywhere}
+@media (max-width:900px){.coll{grid-template-columns:repeat(2,minmax(0,1fr))}}
