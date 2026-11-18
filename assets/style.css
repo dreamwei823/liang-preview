@@ -239,3 +239,21 @@ html[lang="en"] .reviews blockquote::after{content:"”"}
   #walk .series:first-child{padding-top:48px}
   #walk .series:first-child .series-head + .walk-item{margin-top:40px}
 }
+
+/* 2026-11-18 多語言：簡中、日、韓、德的字體與引號；六語切換列；機器翻譯說明 */
+html[lang="zh-Hans"]{--serif:"Noto Serif SC","Noto Serif TC",serif;--sans:"Noto Sans SC","Noto Sans TC",system-ui,sans-serif}
+html[lang="ja"]{--serif:"Noto Serif JP","Noto Serif TC",serif;--sans:"Noto Sans JP","Noto Sans TC",system-ui,sans-serif}
+html[lang="ko"]{--serif:"Noto Serif KR","Noto Serif TC",serif;--sans:"Noto Sans KR","Noto Sans TC",system-ui,sans-serif;--track:0}
+html[lang="ko"] .brand{letter-spacing:.12em}
+html[lang="de"]{--serif:"Source Serif 4","Noto Serif TC",serif;--sans:"Inter","Noto Sans TC",system-ui,sans-serif;--track:0;--lh:1.6}
+html[lang="de"] .brand{letter-spacing:.06em}
+html[lang="de"] .name{letter-spacing:.12em}
+html[lang="de"] .quote blockquote{quotes:"„" "“"}
+html[lang="de"] .reviews blockquote::before{content:"„"}
+html[lang="de"] .reviews blockquote::after{content:"“"}
+.lang{flex-wrap:wrap;gap:4px 7px;font-size:13px}
+.mt-note{font-size:12px;color:var(--ink-2)}
+@media (max-width:700px){
+  .nav .lang{flex-basis:100%}
+  .page-head:has(.speed){padding-top:36px}
+}
