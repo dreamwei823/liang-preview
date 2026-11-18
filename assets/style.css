@@ -308,3 +308,11 @@ html[lang="de"] .reviews blockquote::after{content:"“"}
 @media (max-width:700px){.hero .name{margin-bottom:10px}.reel-hint{margin:0 0 22px}}
 .doors .q,.ways p,.quote blockquote{text-wrap:pretty}
 @media (max-width:700px){.reel img{max-height:38vh;object-position:left top}}
+
+/* 2026-11-18 法文 */
+html[lang="fr"]{--serif:"Source Serif 4","Noto Serif TC",serif;--sans:"Inter","Noto Sans TC",system-ui,sans-serif;--track:0;--lh:1.6}
+html[lang="fr"] .brand{letter-spacing:.06em}
+html[lang="fr"] .name{letter-spacing:.12em}
+html[lang="fr"] .quote blockquote{quotes:"«\00a0" "\00a0»"}
+html[lang="fr"] .reviews blockquote::before{content:"«\00a0"}
+html[lang="fr"] .reviews blockquote::after{content:"\00a0»"}
