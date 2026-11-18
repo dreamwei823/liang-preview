@@ -9,7 +9,7 @@
     function setFilter(f){
       var n=0;
       cells.forEach(function(c){
-        var ok=f==='all'||c.dataset.kind===f||(f==='inq'&&c.dataset.inq==='1');
+        var ok=f==='all'||c.dataset.kind===f||(f==='inq'&&c.dataset.inq==='1')||(f==='sold'&&c.dataset.sold==='1');
         c.hidden=!ok; if(ok)n++;
       });
       fbtns.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.filter===f?'true':'false')});

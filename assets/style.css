@@ -361,3 +361,9 @@ html[lang="fr"] .reviews blockquote::after{content:"\00a0»"}
   .crit{margin-top:56px}.crit blockquote{font-size:19px}
   .essay{padding-top:48px}.essay blockquote{font-size:20px;margin:40px 0}
 }
+
+/* 2026-11-18 已收藏＝紅點（畫廊慣例；梁先生面談：讓別人知道） */
+.sold{white-space:nowrap}
+.sold::before{content:"";display:inline-block;width:.6em;height:.6em;border-radius:50%;background:#B3261E;margin:0 .4em 0 .5em;vertical-align:baseline}
+dd .sold::before{margin-left:0}
+.coll .by::before{content:"";display:inline-block;width:.6em;height:.6em;border-radius:50%;background:#D8402F;margin-right:.5em}
