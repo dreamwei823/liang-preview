@@ -367,3 +367,10 @@ html[lang="fr"] .reviews blockquote::after{content:"\00a0»"}
 .sold::before{content:"";display:inline-block;width:.6em;height:.6em;border-radius:50%;background:#B3261E;margin:0 .4em 0 .5em;vertical-align:baseline}
 dd .sold::before{margin-left:0}
 .coll .by::before{content:"";display:inline-block;width:.6em;height:.6em;border-radius:50%;background:#D8402F;margin-right:.5em}
+
+/* 2026-11-18 論述全文 */
+.fulltext{margin-top:56px;padding-top:28px;border-top:1px solid var(--line)}
+.fulltext p{font-size:17px;line-height:2.05;margin:0 0 1.5em;max-width:34em;text-align:justify;font-family:"Noto Serif TC","Songti TC",serif}
+.fulltext-note{display:none;margin-top:40px}
+html:not([lang="zh-Hant"]):not([lang="zh-Hans"]) .fulltext-note{display:block}
+.crit-title{font-family:var(--serif);font-weight:500;font-size:22px;line-height:1.8;margin:0 0 14px}
