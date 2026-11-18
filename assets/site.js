@@ -90,3 +90,13 @@
     }
   });
 })();
+
+/* 2026-11-18 手機：語言收成一顆，點了才展開（沒有 JS 時照舊整排顯示） */
+(function(){
+  var l=document.querySelector('.lang');if(!l)return;
+  var cur=l.querySelector('span[aria-current]');if(!cur)return;
+  l.classList.add('js');cur.setAttribute('role','button');cur.setAttribute('tabindex','0');cur.setAttribute('aria-expanded','false');
+  function t(){var o=l.classList.toggle('open');cur.setAttribute('aria-expanded',o?'true':'false');}
+  cur.addEventListener('click',t);
+  cur.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();t();}});
+})();

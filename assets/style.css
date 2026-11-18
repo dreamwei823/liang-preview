@@ -420,3 +420,24 @@ p,li,figcaption,blockquote,dd{text-wrap:pretty}
 /* 2026-11-18 德法文長字：窄欄用連字號斷，不硬切 */
 :lang(de) .coll .by,:lang(de) .coll .c,:lang(fr) .coll .by,:lang(fr) .coll .c,:lang(en) .coll .by{hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
 :lang(de) .coll .c .t,:lang(fr) .coll .c .t,:lang(en) .coll .c .t{overflow-wrap:break-word}
+
+/* 2026-11-18 手機頂端主從（梁先生：選單太均質、直覺沒有重點）：名字是主角，選單變輕，語言收成一顆 */
+@media (max-width:700px){
+  .site-head{padding-top:16px;gap:8px 18px}
+  .site-head .brand{font-size:24px;letter-spacing:.3em;flex-basis:100%;margin-bottom:6px}
+  html[lang="en"] .site-head .brand,html[lang="de"] .site-head .brand,html[lang="fr"] .site-head .brand{letter-spacing:.04em}
+  .nav{width:100%;gap:6px 17px;font-size:13px;letter-spacing:.08em;align-items:center}
+  .nav a{color:var(--ink-2)}
+  .nav > a:first-of-type,.nav a[aria-current="page"]{color:var(--ink)}
+  .nav .lang.js{flex-basis:auto;margin-left:auto;letter-spacing:0}
+  .lang.js a,.lang.js span[aria-hidden]{display:none}
+  .lang.js span[aria-current]{cursor:pointer;border:1px solid var(--line);padding:3px 10px;border-radius:999px;color:var(--ink-2);font-size:12px;white-space:nowrap}
+  .lang.js span[aria-current]::after{content:" ▾";font-size:10px}
+  .nav .lang.js.open{flex-basis:100%;margin-left:0;gap:6px 10px;align-items:center;padding-top:4px}
+  .lang.js.open a{display:inline}
+  .hero{padding-top:36px}
+  .hero .name{font-size:48px;letter-spacing:.3em;line-height:1.2;margin-bottom:10px}
+  html[lang="en"] .hero .name,html[lang="de"] .hero .name,html[lang="fr"] .hero .name{font-size:34px;letter-spacing:.03em}
+  html[lang="ko"] .hero .name{letter-spacing:.14em}
+  .reel-hint{font-size:12px;letter-spacing:.06em}
+}
