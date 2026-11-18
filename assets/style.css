@@ -316,3 +316,48 @@ html[lang="fr"] .name{letter-spacing:.12em}
 html[lang="fr"] .quote blockquote{quotes:"«\00a0" "\00a0»"}
 html[lang="fr"] .reviews blockquote::before{content:"«\00a0"}
 html[lang="fr"] .reviews blockquote::after{content:"\00a0»"}
+
+/* 2026-11-18 面談回饋：被收藏區要很明顯；段落要有停頓點；每張作品放藝評；論述一篇一篇。數值暫定 */
+.collected{margin-top:150px;background:var(--ink);color:var(--bg)}
+.collected .in{padding:120px var(--gut) 130px}
+.collected .label{color:#B8AD9E}
+.collected h2{font-family:var(--serif);font-weight:500;font-size:44px;line-height:1.3;margin:0 0 14px;color:var(--bg)}
+.collected .lead{font-size:14px;color:#B8AD9E;margin:0 0 64px;max-width:36em}
+.coll{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:56px 3vw}
+.coll a{display:block;text-decoration:none;color:var(--bg)}
+.coll img{display:block;width:100%;aspect-ratio:4/3;height:auto;object-fit:cover}
+.coll .c{display:block;margin-top:14px;font-size:14px;color:#D9D0C3}
+.coll .c .t{color:var(--bg);margin-right:.6em;font-family:var(--serif);font-size:17px}
+.coll .by{display:block;margin-top:6px;font-size:13px;letter-spacing:.08em;color:#E2B98A}
+.coll a:hover .t{text-decoration:underline;text-underline-offset:.28em;text-decoration-thickness:1px}
+/* 停頓點：引言獨佔一屏；作品頁每個系列開頭是一個章節頁 */
+.section:has(> .quote){min-height:78vh;display:flex;align-items:center;padding-top:0}
+.section:has(> .quote) .quote{max-width:22em}
+.section:has(> .quote) blockquote{font-size:clamp(28px,4.2vw,52px);line-height:1.6}
+#walk .series:not(:first-child){padding-top:0}
+#walk .series:not(:first-child) .series-head{min-height:72vh;display:flex;flex-direction:column;justify-content:center;max-width:none;border-top:1px solid var(--line);margin-top:160px}
+#walk .series:not(:first-child) .series-head h2{font-size:clamp(36px,5vw,64px)}
+/* 作品頁的藝評 */
+.crit{margin:72px auto 0;max-width:34em;border-top:1px solid var(--line);padding-top:28px}
+.crit blockquote{font-family:var(--serif);font-weight:500;font-size:22px;line-height:1.8;margin:0 0 14px;quotes:"「" "」"}
+.crit blockquote::before{content:open-quote}.crit blockquote::after{content:close-quote}
+.crit b{font-weight:500;color:var(--ink)}
+/* 論述單篇 */
+.essay{padding:10vh var(--gut) 0;max-width:calc(40em + 2 * var(--gut))}
+.essay .who{font-size:14px;color:var(--ink-2);margin:0 0 18px}
+.essay .who b{font-weight:500;color:var(--ink);margin-right:.6em;font-size:16px}
+.essay h1{font-family:var(--serif);font-weight:500;font-size:clamp(28px,3.6vw,44px);line-height:1.5;margin:0 0 14px}
+.essay blockquote{font-family:var(--serif);font-weight:500;font-size:24px;line-height:1.9;margin:56px 0;padding-left:22px;border-left:1px solid var(--ink)}
+.essay p{max-width:34em}
+.essay .essay-note{margin-top:56px;padding-top:20px;border-top:1px solid var(--line)}
+.essay .label{margin-top:64px}
+.essay-series{list-style:none;margin:0;padding:0;display:flex;gap:24px;flex-wrap:wrap;font-family:var(--serif);font-size:20px}
+.reviews .more{margin-top:14px}
+@media (max-width:900px){.coll{grid-template-columns:repeat(2,1fr);gap:40px 20px}}
+@media (max-width:700px){
+  .collected{margin-top:96px}.collected .in{padding:84px var(--gut) 90px}.collected h2{font-size:32px}.collected .lead{margin-bottom:44px}
+  .section:has(> .quote){min-height:70vh}
+  #walk .series:not(:first-child) .series-head{min-height:60vh;margin-top:110px}
+  .crit{margin-top:56px}.crit blockquote{font-size:19px}
+  .essay{padding-top:48px}.essay blockquote{font-size:20px;margin:40px 0}
+}
