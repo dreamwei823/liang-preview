@@ -268,3 +268,42 @@ html[lang="de"] .reviews blockquote::after{content:"“"}
 @media (max-width:700px){
   .page-head:has(.speed){padding-top:36px}
 }
+
+/* 2026-11-18 首頁 v2：主視覺一次一件、左右滑（不自動輪播）；「從哪裡開始」五個入口；三種距離。數值為暫定 */
+.reel{display:flex;align-items:flex-start;gap:12vw;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:var(--gut);-webkit-overflow-scrolling:touch;margin:0 calc(-1 * var(--gut));padding:0 var(--gut) 6px;scrollbar-width:none;outline:none}
+.reel::-webkit-scrollbar{display:none}
+.reel figure{margin:0;flex:0 0 auto;scroll-snap-align:start}
+.reel a{display:block;text-decoration:none}
+.reel img{display:block;height:min(64vh,620px);width:auto;max-width:78vw;object-fit:contain}
+.reel figcaption{margin-top:16px;font-size:13px;color:var(--ink-2)}
+.reel figcaption .t{color:var(--ink);margin-right:.8em}
+.reel-hint{margin:18px 0 0;font-size:13px;color:var(--ink-2)}
+.doors{list-style:none;margin:0;padding:36px 0 0;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);gap:3vw}
+.doors a{display:block;text-decoration:none}
+.doors img{display:block;width:100%;aspect-ratio:1/1;height:auto;object-fit:cover}
+.doors .q{display:block;margin-top:16px;font-family:var(--serif);font-weight:500;font-size:17px;line-height:1.7;color:var(--ink)}
+.doors .g{display:block;margin-top:8px;font-size:13px;color:var(--ink-2)}
+.doors a:hover .q{text-decoration:underline;text-underline-offset:.28em;text-decoration-thickness:1px}
+.doors-note{margin:28px 0 0;font-size:13px;color:var(--ink-2)}
+.ways.three{grid-template-columns:1fr 1fr 1fr}
+@media (max-width:900px){.doors{grid-template-columns:repeat(2,1fr);gap:32px 20px}}
+@media (max-width:700px){
+  .hero{padding-top:24px}
+  .hero .name{margin-bottom:28px}
+  .reel{gap:20px}
+  .reel img{height:auto;width:80vw;max-width:80vw;max-height:50vh}
+  .doors{grid-template-columns:1fr;gap:0;padding-top:8px}
+  .doors li{border-bottom:1px solid var(--line)}
+  .doors a{display:grid;grid-template-columns:96px 1fr;column-gap:16px;align-items:center;padding:16px 0}
+  .doors img{grid-row:1 / span 2;width:96px}
+  .doors .q{margin-top:0;font-size:16px;align-self:end}
+  .doors .g{margin-top:4px;align-self:start}
+  .ways.three{grid-template-columns:1fr}
+}
+/* 首頁 v2 補：提示句放在名字下面、畫的上面，避免直幅作品把提示句推遠 */
+.hero{display:flex;flex-direction:column}
+.hero .name{order:0;margin-bottom:14px}
+.reel-hint{order:1;margin:0 0 5vh}
+.reel{order:2}
+@media (max-width:700px){.hero .name{margin-bottom:10px}.reel-hint{margin:0 0 22px}}
+.doors .q,.ways p,.quote blockquote{text-wrap:pretty}
