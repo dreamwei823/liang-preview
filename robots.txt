@@ -1,2 +1,9 @@
+# 分享預覽用的機器人可以讀（產生網址縮圖）；搜尋引擎先不收錄
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
 User-agent: *
 Disallow: /
