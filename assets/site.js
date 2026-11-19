@@ -63,7 +63,8 @@
 /* 2026-11-18 不留殘字：作品名的「-1」不跟前面拆開；每段結尾幾個字綁在一起，手機窄欄不會最後一行只剩一兩個字 */
 (function(){
   var CJK=/[぀-ヿ㐀-鿿]/, PUNCT=/[\s」』）》〉】。，、！？：；…—．.,!?:;)\]"'”’]/;
-  document.querySelectorAll('.t,.cap b,.work-info h1,.fields dd,title').forEach(function(el){
+  // 不改 <title>：瀏覽器分頁標題不必插入 Word Joiner
+  document.querySelectorAll('.t,.cap b,.work-info h1,.fields dd').forEach(function(el){
     var w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null),n;
     while((n=w.nextNode())){if(/-\d/.test(n.nodeValue))n.nodeValue=n.nodeValue.replace(/-(?=\d)/g,'-⁠');}
   });
@@ -86,8 +87,14 @@
       sp.textContent=s.slice(i);
       last.nodeValue=s.slice(0,i);last.parentNode.insertBefore(sp,last.nextSibling);
     }else{
+      // 拉丁文：只把「短字 + 短尾」黏住，避免 Sammlungen (Auswahl) 這類長詞用不換行空白撐破窄屏
       var j=s.lastIndexOf(' ');
-      if(j>0&&s.length-j<=14)last.nodeValue=s.slice(0,j)+' '+s.slice(j+1);
+      if(j>0&&s.length-j<=14){
+        var k=s.lastIndexOf(' ',j-1);
+        var prevLen=j-(k+1);
+        var lastLen=s.length-j-1;
+        if(prevLen<=8&&lastLen<=12)last.nodeValue=s.slice(0,j)+' '+s.slice(j+1);
+      }
     }
   });
 })();

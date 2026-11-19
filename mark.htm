@@ -38,7 +38,7 @@ W.forEach(x=>{
   if(x.s!==cur){ cur=x.s; const h=document.createElement("h2"); h.textContent=cur; list.appendChild(h); }
   const d=document.createElement("div"); d.className="w"; const st=S[x.k];
   d.innerHTML='<img loading="lazy" src="'+x.img+'" alt=""><div><span class="t"></span><span class="y"></span><div class="seg"><button type="button" data-v="y">已收藏</button><button type="button" data-v="n">沒有</button><button type="button" data-v="u">不確定</button></div><div class="more"></div></div>';
-  d.querySelector(".t").textContent=x.t; d.querySelector(".y").textContent=x.y;
+  d.querySelector("img").alt=x.t; d.querySelector(".t").textContent=x.t; d.querySelector(".y").textContent=x.y;
   const more=d.querySelector(".more");
   function draw(){
     d.classList.toggle("on",st.v==="y");

@@ -547,3 +547,12 @@ p,li,figcaption,blockquote,dd{text-wrap:pretty}
   .home .site-head{padding-top:58px}
   .nav{gap:0 13px}
 }
+
+/* 2026-11-19 健檢：窄屏長詞／表格不撐出橫向捲動（德文等）；不改版面結構 */
+.cols > *,.road a,.road .nm,.collected h2,.label{min-width:0}
+.collected h2,.label,.road .nm,.ways p,.doors .q{overflow-wrap:anywhere}
+.table{max-width:100%}
+.table td{overflow-wrap:anywhere}
+@media (max-width:700px){
+  .table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+}
