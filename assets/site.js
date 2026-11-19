@@ -34,7 +34,7 @@
       setFilter(b.dataset.filter);
       try{location.hash='index/'+b.dataset.filter}catch(e){}
     })});
-    function goTo(el){var stop=false,ro=null;var fn=function(){if(!stop)el.scrollIntoView()};var end=function(){stop=true;if(ro)ro.disconnect();['wheel','touchstart','keydown','mousedown'].forEach(function(e){window.removeEventListener(e,end)})};fn();if(window.ResizeObserver){ro=new ResizeObserver(fn);ro.observe(document.body)}['wheel','touchstart','keydown','mousedown'].forEach(function(e){window.addEventListener(e,end,{passive:true})});setTimeout(end,10000)}
+    function goTo(el){var stop=false,ro=null;var fn=function(){if(!stop)el.scrollIntoView()};var end=function(){stop=true;if(ro)ro.disconnect();['wheel','touchstart','keydown','mousedown'].forEach(function(e){window.removeEventListener(e,end)})};fn();if(window.ResizeObserver){ro=new ResizeObserver(fn);ro.observe(document.body)}['wheel','touchstart','keydown','mousedown'].forEach(function(e){window.addEventListener(e,end,{passive:true})});setTimeout(end,20000)}
     window.addEventListener('hashchange',function(){
       var h=location.hash.replace('#','');
       if(h==='index'||h.indexOf('index/')===0||h==='walk'||h==='')fromHash();
