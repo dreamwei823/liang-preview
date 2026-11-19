@@ -34,14 +34,15 @@
       setFilter(b.dataset.filter);
       try{location.hash='index/'+b.dataset.filter}catch(e){}
     })});
+    function goTo(el){var stop=false,ro=null;var fn=function(){if(!stop)el.scrollIntoView()};var end=function(){stop=true;if(ro)ro.disconnect();['wheel','touchstart','keydown','mousedown'].forEach(function(e){window.removeEventListener(e,end)})};fn();if(window.ResizeObserver){ro=new ResizeObserver(fn);ro.observe(document.body)}['wheel','touchstart','keydown','mousedown'].forEach(function(e){window.addEventListener(e,end,{passive:true})});setTimeout(end,10000)}
     window.addEventListener('hashchange',function(){
       var h=location.hash.replace('#','');
       if(h==='index'||h.indexOf('index/')===0||h==='walk'||h==='')fromHash();
-      else if(h.indexOf('s-')===0){show('walk');var el=document.getElementById(h);if(el)el.scrollIntoView();}
+      else if(h.indexOf('s-')===0){show('walk');var el=document.getElementById(h);if(el)goTo(el);}
     });
     fromHash();
     var h0=location.hash.replace('#','');
-    if(h0.indexOf('s-')===0){var el0=document.getElementById(h0);if(el0)setTimeout(function(){el0.scrollIntoView()},30);}
+    if(h0.indexOf('s-')===0){var el0=document.getElementById(h0);if(el0)setTimeout(function(){goTo(el0)},30);}
   }
 
   // 只看畫：介面在 1.5 秒內淡出，移動或觸碰後再出現
