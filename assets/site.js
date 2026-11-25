@@ -1,7 +1,16 @@
 (function(){
-  // 散步｜索引 — hash 控制，不依賴 history/localStorage（預覽環境為 opaque origin）
+  // 散步（隨機）｜系列（hash 仍叫 index）— hash 控制，不依賴 history/localStorage（預覽環境為 opaque origin）
   var walk=document.getElementById('walk'), idx=document.getElementById('index');
   if(walk&&idx){
+    // 散步＝隨機：每次進來把所有作品洗牌成一列（沒有 JS 時照年代排）
+    var items=[].slice.call(walk.querySelectorAll('.walk-item'));
+    if(items.length>1){
+      for(var i=items.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=items[i];items[i]=items[j];items[j]=t;}
+      var box=document.createElement('div');box.className='walk-random';
+      items.forEach(function(it){box.appendChild(it)});
+      walk.querySelectorAll('.series').forEach(function(s){s.hidden=true});
+      walk.appendChild(box);
+    }
     var btns=document.querySelectorAll('[data-view]');
     var fbtns=document.querySelectorAll('[data-filter]');
     var cells=idx.querySelectorAll('.cell');
@@ -12,6 +21,8 @@
         var ok=f==='all'||c.dataset.kind===f||(f==='inq'&&c.dataset.inq==='1')||(f==='sold'&&c.dataset.sold==='1');
         c.hidden=!ok; if(ok)n++;
       });
+      // 系列：整組都被篩掉就把標題一起藏起來
+      idx.querySelectorAll('.g-series').forEach(function(g){g.hidden=!g.querySelector('.cell:not([hidden])')});
       fbtns.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.filter===f?'true':'false')});
       if(empty)empty.hidden=n>0;
     }
@@ -38,11 +49,11 @@
     window.addEventListener('hashchange',function(){
       var h=location.hash.replace('#','');
       if(h==='index'||h.indexOf('index/')===0||h==='walk'||h==='')fromHash();
-      else if(h.indexOf('s-')===0){show('walk');var el=document.getElementById(h);if(el)goTo(el);}
+      else if(h.indexOf('s-')===0){show('index');var el=document.getElementById(h);if(el)goTo(el);}
     });
     fromHash();
     var h0=location.hash.replace('#','');
-    if(h0.indexOf('s-')===0){var el0=document.getElementById(h0);if(el0)setTimeout(function(){goTo(el0)},30);}
+    if(h0.indexOf('s-')===0){show('index');var el0=document.getElementById(h0);if(el0)setTimeout(function(){goTo(el0)},30);}
   }
 
   // 只看畫：介面在 1.5 秒內淡出，移動或觸碰後再出現

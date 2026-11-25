@@ -547,3 +547,100 @@ p,li,figcaption,blockquote,dd{text-wrap:pretty}
   .home .site-head{padding-top:58px}
   .nav{gap:0 13px}
 }
+
+/* 2026-11-25 橘哥：上排選單每項一樣大、間距平均，「作品」不特別放大 */
+.nav > a,.nav > a[href$="works.html"],.nav > a[href$="contact.html"]{color:var(--ink-2);font-size:15px;font-weight:400;margin-left:0;margin-right:0}
+.nav > a[aria-current="page"]{color:var(--ink)}
+@media (max-width:700px){
+  .nav > a,.nav > a[href$="works.html"],.nav > a:first-of-type{font-size:13px;color:var(--ink-2)}
+  .nav > a[aria-current="page"]{color:var(--ink)}
+}
+/* 2026-11-25 作品頁：散步隨機一列；「系列」＝格子照系列分組 */
+.walk-random{padding:0 var(--gut)}
+.walk-random .walk-item:first-child{margin-top:110px}
+.g-series{padding-top:88px}
+.g-series:first-of-type{padding-top:44px}
+.g-head{padding:0 var(--gut)}
+.g-head .sign{margin:0 0 10px}
+.g-head h2{font-size:24px}
+.g-head h2 .en{display:block;font-family:var(--sans);font-size:13px;color:var(--ink-2);letter-spacing:.06em;margin-top:6px;font-weight:400}
+.g-series .grid{padding-top:24px}
+@media (max-width:700px){
+  .g-series{padding-top:64px}
+  .g-head h2{font-size:21px}
+  .walk-random .walk-item:first-child{margin-top:64px}
+}
+/* 2026-11-25 橘哥：關於頁作家照片大小一致（同寬、同比例 4:5，照片之後補） */
+.photos,.photos figure:first-child{grid-template-columns:repeat(3,1fr);grid-column:auto;align-items:start}
+.photos img{aspect-ratio:4/5;object-fit:cover;height:auto}
+@media (max-width:700px){.photos{grid-template-columns:repeat(3,1fr);gap:10px}}
+/* 2026-11-25 橘哥：電腦版欄目標題貼近內容（原 1fr／1.4fr＋6vw，中間空 500 多 px） */
+.cols{grid-template-columns:12em minmax(0,52rem);gap:56px}
+/* 2026-11-25 橘哥：個人簡介字放大一級（17→19px），比引言小、比表格大 */
+.cols > .text p:not(.label){font-size:19px;line-height:1.85}
+.cols > .text p.label{font-size:13px;line-height:1.6}
+@media (max-width:700px){
+  .cols{grid-template-columns:1fr;gap:12px}
+  .cols > .text p:not(.label){font-size:17px}
+  /* 手機：展覽表三欄擠成一欄一欄往下排——年份、展名、地點各一行 */
+  .table,.table tbody,.table tr,.table td{display:block;width:auto}
+  .table tr{padding:14px 0;border-bottom:1px solid var(--line)}
+  .table th{display:none}
+  .table td{border:0;padding:0}
+  .table td:first-child{width:auto;padding:0 0 4px}
+  .table td + td + td{color:var(--ink-2);font-size:14px;margin-top:2px}
+}
+/* ===== 2026-11-25 橘哥：關於／藝評頁字級重排（欄位標題要跟內文有區別；電腦字放大、左右拉近；手機一欄往下排）=====
+   電腦：欄位標題 22 明體＋上方短線｜簡介 19｜表格展名 17、地點 16、年份 15｜引言 26｜出處 14
+   手機：欄位標題 20 明體＋短線｜簡介 17｜展名 17、地點 15、年份 14｜引言 21｜出處 13 */
+.cols{grid-template-columns:11em minmax(0,52rem);gap:48px}
+.cols > div:first-child .label,.cols > .text:first-child p.label{font-family:var(--serif);font-weight:500;font-size:22px;line-height:1.5;color:var(--ink);letter-spacing:.08em;margin:0;padding-top:14px;position:relative}
+.cols > div:first-child .label::before,.cols > .text:first-child p.label::before{content:"";position:absolute;top:0;left:0;width:28px;height:1px;background:var(--ink)}
+.cols .table{font-size:17px}
+.cols .table td{line-height:1.7}
+.cols .table td:first-child{font-size:15px;padding-top:14px;width:5.5em}
+.cols .table td + td + td{color:var(--ink-2);font-size:16px}
+.cols .quote cite{font-size:14px}
+@media (max-width:700px){
+  .cols{grid-template-columns:1fr;gap:20px}
+  .cols > div:first-child .label,.cols > .text:first-child p.label{font-size:20px;padding-top:12px}
+  .cols .quote{margin-left:0;padding-left:0}
+  .cols .table{font-size:17px}
+  .cols .table td:first-child{font-size:14px;padding:0 0 4px;width:auto}
+  .cols .table td + td + td{font-size:15px}
+  .cols .quote cite{font-size:13px}
+}
+.nb{white-space:nowrap}
+.cols .quote{margin-left:0;margin-right:0}
+/* 2026-11-25 橘哥：動態頁媒體影片直接嵌在頁面上（下面留文字連結當備援） */
+.film{margin:0;max-width:52rem}
+.film-frame{position:relative;aspect-ratio:16/9;background:#1c1a17}
+.film-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.film figcaption{margin-top:14px;font-family:var(--serif);font-size:19px}
+@media (max-width:700px){.film figcaption{font-size:17px}}
+/* 2026-11-25 排版檢查（分工視窗）：收藏頁系列標題被 .collected h2 的 margin:0 蓋掉，緊貼上一組分隔線 → 補回上方間距 */
+.collected .coll-series{margin-top:72px}
+.collected .coll-series:first-of-type{margin-top:8px}
+@media (max-width:700px){.collected .coll-series{margin-top:56px}.collected .coll-series:first-of-type{margin-top:8px}}
+/* 2026-11-25 排版檢查（分工視窗）：同一套比例套到首頁與其他頁
+   層次：頁標題 44/30 ＞ 欄位標題 22/20（明體＋短線）＞ 內文 19/17 ＞ 說明 15/14 */
+/* 首頁「三十年的路」：年份欄跟關於頁欄寬一致（11em），系列名不再從頁中間才開始；年份、件數放大 */
+.road a{grid-template-columns:11em minmax(0,1fr) auto;gap:16px 48px}
+.road .yr,.road .ct{font-size:15px}
+/* 首頁「三種距離」：內文 14 → 16，小標 19 → 22 */
+.ways h3{font-size:22px}
+.ways p{font-size:16px;line-height:1.8}
+/* 欄位頁裡的說明文字（p.meta）退回說明層級，別跟內文一樣大 */
+.cols > .text p.meta{font-size:15px;line-height:1.8}
+/* 作品頁「系列」分組標題放大一級，跟格子圖說拉開 */
+.g-head h2{font-size:28px}
+@media (max-width:700px){
+  .road a{grid-template-columns:1fr auto;gap:2px 12px}
+  .road .yr,.road .ct{font-size:14px}
+  .ways h3{font-size:20px}
+  .ways p{font-size:15px}
+  .cols > .text p.meta{font-size:14px}
+  .g-head h2{font-size:22px}
+}
+/* 手機：年表英文副標排到中文下面，避免「Flower — Form / and Colour」折成空空的兩行 */
+@media (max-width:700px){.road .nm em{display:block;margin:4px 0 0;line-height:1.5}}

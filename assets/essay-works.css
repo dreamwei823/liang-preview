@@ -1,0 +1,14 @@
+/* 2026-11-25 藝評頁：文中提到的作品縮圖、註腳、講座問句（只在藝評頁引入） */
+.essay-works{list-style:none;margin:0 0 8px;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:28px 24px;max-width:46em}
+.essay-works a{display:block;text-decoration:none;color:var(--ink)}
+.essay-works .im{display:block;aspect-ratio:1/1;background:var(--line);overflow:hidden}
+.essay-works img{width:100%;height:100%;object-fit:cover;display:block}
+.essay-works .t{display:block;margin-top:10px;font-size:15px;line-height:1.5}
+.essay-works .y{display:block;font-size:13px;color:var(--ink-2)}
+.essay-works a:hover .t{text-decoration:underline;text-underline-offset:.28em;text-decoration-thickness:1px}
+.essay .fulltext p.fn{font-size:13px;line-height:1.7;color:var(--ink-2);margin-top:40px;text-align:left}
+.essay .fulltext h2.sec.q{font-size:20px}
+@media (max-width:700px){
+  .essay-works{grid-template-columns:repeat(2,1fr);gap:22px 14px}
+  .essay-works .t{font-size:14px}
+}
