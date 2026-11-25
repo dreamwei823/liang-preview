@@ -45,3 +45,14 @@
   .about .section:has(.table) + .section:has(.table){padding-top:64px}
   .about .site-foot{margin-top:96px}
 }
+
+/* ── 追加 1：不讓瀏覽器自己做假粗體（選單霞鶩文楷 700 是 Google Fonts 真字重，不受影響） */
+body.about{font-synthesis:none}
+
+/* ── 追加 2：避頭點——逗號、頓號、下引號不出現在行首（韓文保留 keep-all 斷詞） */
+.about main p,.about main td,.about main blockquote,.about main cite,.about main li{line-break:strict;overflow-wrap:break-word}
+html:not([lang="ko"]) .about main p,html:not([lang="ko"]) .about main td,html:not([lang="ko"]) .about main blockquote,html:not([lang="ko"]) .about main cite,html:not([lang="ko"]) .about main li{word-break:normal}
+
+/* ── 追加 3：展歷表同一年連續多筆，第二筆起年份隱去（位置保留），像畫冊年表
+   由 about-fix.js 依畫面實際順序比對上一列加 .same-yr；螢幕閱讀器照樣念得到 */
+.about .table tr.same-yr td:first-child{color:transparent}
