@@ -1,6 +1,7 @@
 /* 作品頁「系列」檢視最上面：系列快速切換列＋系列封面牆
-   2026-11-25 v2（橘哥修改單）：字不壓圖、放圖正下方；封面保留原比例不裁切，大小錯落；新到舊。
-   每格佔幾欄寫在 HTML 的 --d（桌機 12 欄）／--t（平板 6 欄）／--m（手機 2 欄），由 series_wall_20261125.py 產生。
+   2026-11-25 v3：橘哥看 v2（原比例、大小錯落）說大小很亂，改成同尺寸正方形縮圖的整齊網格。
+   正方形裁切是業主指定的例外：別處的作品圖一律不裁，只有這面牆裁。字放圖正下方；新到舊。
+   HTML 由 series_wall_20261125.py 產生；改這個檔的版面，連結的 ?v= 要加一。
    點一格連到 #s-xxx，site.js 會切到系列檢視並捲到那一組。 */
 
 /* 快速切換列：一行、放不下就左右滑 */
@@ -19,10 +20,10 @@
 .s-jump .j-y::after{content:")"}
 .s-jump a:hover .j-n,.s-jump a:focus-visible .j-n{color:var(--ink);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.28em}
 
-/* 封面牆 */
-.s-wall{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:72px 32px;align-items:end;padding:36px var(--gut) 0}
-.s-cover{grid-column:span var(--d);display:block;min-width:0;color:var(--ink);text-decoration:none}
-.s-cover img{display:block;width:auto;height:auto;max-width:min(100%,var(--w));max-height:640px}
+/* 封面牆：電腦 4 欄、平板 3 欄、手機 2 欄，格子一樣大 */
+.s-wall{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:56px 32px;align-items:start;padding:36px var(--gut) 0}
+.s-cover{display:block;min-width:0;color:var(--ink);text-decoration:none}
+.s-cover img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;object-position:50% 50%;background:var(--line)}
 .s-t{display:block;margin-top:10px;font-family:var(--serif);font-size:20px;font-weight:500;line-height:1.4;letter-spacing:var(--track);
   word-break:keep-all;overflow-wrap:anywhere} /* 系列名不從字中間斷，真的放不下才斷 */
 .s-y,.s-n{display:inline-block}
@@ -36,16 +37,13 @@
 .s-wall + .filters{padding-top:88px}
 
 @media (max-width:1100px){
-  .s-wall{grid-template-columns:repeat(6,minmax(0,1fr));gap:60px 28px}
-  .s-cover{grid-column:span var(--t)}
+  .s-wall{grid-template-columns:repeat(3,minmax(0,1fr));gap:48px 28px}
 }
 @media (max-width:700px){
   .s-jump{padding-top:24px}
-  .s-wall{grid-template-columns:repeat(2,minmax(0,1fr));gap:44px 20px;padding-top:24px}
-  .s-cover{grid-column:span var(--m)}
-  .s-cover img{max-height:520px}
+  .s-wall{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 20px;padding-top:24px}
   .s-t{font-size:18px}
-  .s-cover:not(.s-big) .s-y{display:block} /* 半寬格放不下一行：年份一行、系列名一行，不留「｜」掛在行尾 */
-  .s-cover:not(.s-big) .s-bar{display:none}
+  .s-y{display:block} /* 兩欄放不下一行：年份一行、系列名一行，不留「｜」掛在行尾 */
+  .s-bar{display:none}
   .s-wall + .filters{padding-top:64px}
 }
