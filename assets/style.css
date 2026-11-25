@@ -738,3 +738,5 @@ html[lang="ko"] body{word-break:keep-all;overflow-wrap:break-word}
 main a.social-icon-link[target="_blank"]::after{content:none!important}
 .social-line{display:flex;align-items:center;gap:6px;margin:0 0 4px -10px;font-family:var(--serif);font-size:24px}
 @media (max-width:700px){.social-line{font-size:20px}}
+/* 2026-11-25 英文選單手機：「Collection & Auctions」太長折成 3 排 → 只對英文縮到 14px、字距 0，目標 2 排；中文不動 */
+@media (max-width:700px){html[lang="en"] .nav > a,html[lang="en"] .nav > a[href$="works.html"],html[lang="en"] .nav > a[href$="contact.html"],html[lang="en"] .nav > a:first-of-type{letter-spacing:0;font-size:14px;margin-left:0}}
