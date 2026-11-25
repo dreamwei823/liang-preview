@@ -729,3 +729,12 @@ html[lang="ko"] body{word-break:keep-all;overflow-wrap:break-word}
 .news .portal .sm{font-size:13px}
 .book-cover img{box-shadow:none;outline:1px solid var(--line);outline-offset:0}
 .soon{border:0;border-top:1px solid var(--line);padding:14px 0 0}
+/* 2026-11-25 聯絡頁與頁尾 IG／YouTube 官方標誌（業主：換大家熟悉的圖示）；圖形與動態頁同一組；點擊範圍 ≥44px */
+.social{display:flex;gap:4px;margin:0 0 6px -10px}
+.social .social-icon-link,.social-line .social-icon-link{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:10px;line-height:0;text-decoration:none;transition:opacity .2s ease,transform .2s ease}
+.social .social-icon-link:hover,.social-line .social-icon-link:hover{opacity:.65;transform:translateY(-1px)}
+.social .si,.social-line .si{display:block;height:22px;width:auto}
+.social .si-yt,.social-line .si-yt{height:20px}
+main a.social-icon-link[target="_blank"]::after{content:none!important}
+.social-line{display:flex;align-items:center;gap:6px;margin:0 0 4px -10px;font-family:var(--serif);font-size:24px}
+@media (max-width:700px){.social-line{font-size:20px}}
