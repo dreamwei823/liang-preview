@@ -1,3 +1,4 @@
+/* rev 2026-11-25b 藝評單篇置中＋內文 19px＋防殘字 */
 /* 2026-11-25 藝評頁：文中提到的作品縮圖、註腳、講座問句（只在藝評頁引入） */
 .essay-works{list-style:none;margin:0 0 8px;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:28px 24px;max-width:46em}
 .essay-works a{display:block;text-decoration:none;color:var(--ink)}
@@ -11,4 +12,19 @@
 @media (max-width:700px){
   .essay-works{grid-template-columns:repeat(2,1fr);gap:22px 14px}
   .essay-works .t{font-size:14px}
+}
+
+/* 2026-11-25b 藝評單篇：電腦版整欄置中；內文約 38em（19px×38＝722px）、19px、行高 1.9 */
+main:has(> .essay) > .crumb,
+.essay{width:100%;max-width:calc(722px + 2 * var(--gut));margin-left:auto;margin-right:auto}
+.essay p,.essay .fulltext p{max-width:none}
+.essay .fulltext p{font-size:19px;line-height:1.9}
+.essay-works{max-width:none}
+/* 防殘字：段落最後一行不只剩一個字（Chrome／Safari 的 pretty 斷行） */
+.essay h1,.essay p,.essay blockquote,.essay-works .t{text-wrap:pretty}
+/* 手機：長網址、長英文不撐破版面 */
+.essay{overflow-wrap:break-word}
+.essay a{overflow-wrap:anywhere}
+@media (max-width:700px){
+  .essay .fulltext p{font-size:18px}
 }
