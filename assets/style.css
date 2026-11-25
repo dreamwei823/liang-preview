@@ -766,3 +766,11 @@ main a.social-icon-link[target="_blank"]::after{content:none!important}
 .copy-mail{-webkit-appearance:none;appearance:none;background:none;border:0;border-radius:0;font:inherit;letter-spacing:inherit;display:inline-flex;align-items:center;min-height:44px;padding:0;font-size:14px;color:var(--ink);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px;cursor:pointer}
 .copy-ok,.copy-ng{font-size:13px;color:var(--ink-2)}
 .copy-ok[hidden],.copy-ng[hidden]{display:none}
+/* 2026-11-25 關於頁：今周刊 2018「夏天…啤酒」移到三張生活照下當圖說（不跟著手機橫滑）；明體 17／手機 15px 次文字色，出處 12px，與照片下緣 12px */
+.photo-cap{margin:12px 0 0;font-family:var(--serif);font-size:17px;line-height:1.7;color:var(--ink-2)}
+.photo-cap .q::before{content:"「"}.photo-cap .q::after{content:"」"}
+html[lang="en"] .photo-cap .q::before{content:"“"}html[lang="en"] .photo-cap .q::after{content:"”"}
+html[lang="de"] .photo-cap .q::before{content:"„"}html[lang="de"] .photo-cap .q::after{content:"“"}
+html[lang="fr"] .photo-cap .q::before{content:"«\00a0"}html[lang="fr"] .photo-cap .q::after{content:"\00a0»"}
+.photo-cap .src{font-family:var(--sans);font-size:12px;margin-left:.8em;color:var(--ink-2);white-space:nowrap}
+@media (max-width:700px){.photo-cap{font-size:15px}}
