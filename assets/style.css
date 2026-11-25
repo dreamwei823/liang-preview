@@ -329,6 +329,8 @@ html[lang="fr"] .reviews blockquote::after{content:"\00a0»"}
 .coll .c{display:block;margin-top:14px;font-size:14px;color:#D9D0C3}
 .coll .c .t{color:var(--bg);margin-right:.6em;font-family:var(--serif);font-size:17px}
 .coll .by{display:block;margin-top:6px;font-size:13px;letter-spacing:.08em;color:#E2B98A}
+.coll .px{display:block;margin-top:8px;font-size:13px;line-height:1.7;color:#D9D0C3;font-variant-numeric:tabular-nums}
+.coll .px span{color:#B8AD9E;margin-right:.4em}
 .coll a:hover .t{text-decoration:underline;text-underline-offset:.28em;text-decoration-thickness:1px}
 /* 停頓點：引言獨佔一屏；作品頁每個系列開頭是一個章節頁 */
 .section:has(> .quote){min-height:78vh;display:flex;align-items:center;padding-top:0}
