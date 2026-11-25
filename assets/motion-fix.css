@@ -5,11 +5,17 @@
 /* 共用 */
 .mo-sec{animation:fadein var(--fade) ease-out both}
 @media (prefers-reduced-motion:reduce){.mo-sec{animation:none}}
-.mo-eye{margin:0 0 28px;font-family:var(--sans);font-size:13px;line-height:1.6;letter-spacing:.12em;color:var(--ink-2);display:flex;gap:.6em;align-items:baseline}
+.mo-eye{margin:-10px 0 18px;min-height:42px;font-family:var(--sans);font-size:13px;line-height:1.6;letter-spacing:.12em;color:var(--ink-2);display:flex;gap:.6em;align-items:center}
 .mo-eye .sl{opacity:.6}
 main .mo-sec img{display:block;width:100%;height:auto}
 main .mo-sec a[target]::after{content:none;display:none}
 .mo-sec a:focus-visible,.yt-poster:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+
+/* 入口圖示：單色細線，熱區 42×42 */
+.social-icon-link{display:inline-flex;align-items:center;justify-content:center;padding:10px;margin-left:2px;color:#2E2A26;text-decoration:none;transition:opacity .25s ease,transform .25s ease}
+.social-icon-link svg{width:22px;height:22px;display:block}
+@media (hover:hover){.social-icon-link:hover{opacity:.65;transform:translateY(-1px)}}
+.social-icon-link:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 
 /* 上半部：不對稱雙欄 38 / 6 / 56 */
 .mo-top{display:grid;grid-template-columns:38fr 56fr;column-gap:6%;align-items:start;padding:72px var(--gut) 0}
@@ -18,11 +24,6 @@ main .mo-sec a[target]::after{content:none;display:none}
 .ig-ph{margin:0}
 .ph2{width:58%;margin:56px 0 0 auto}
 .ig-main{margin:12px 0 0;max-width:32em;font-family:var(--serif);font-weight:500;font-size:26px;line-height:1.55;letter-spacing:.04em;color:var(--ink);word-break:keep-all;overflow-wrap:break-word;text-wrap:balance}
-.ig-link{margin:8px 0 0;font-family:var(--sans);font-size:14px;letter-spacing:.06em}
-.ig-link a{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:var(--ink);text-decoration:none}
-.ig-link a > span:last-child{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
-.ig-link a > span:last-child::after{content:" ↗";font-size:.85em}
-.ig-ico svg{width:16px;height:16px;display:block}
 
 /* 02 創作與生活：主片 16:9，點了才載入 */
 .mo-yt{padding-top:120px}
