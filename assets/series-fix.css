@@ -1,0 +1,30 @@
+/* 作品頁「系列」檢視最上面的系列封面牆（2026-11-25 業主指定，照他 Flickr 相簿列表的樣式）
+   正方形裁切是業主例外：別處的作品圖一律不裁，只有這面牆裁成正方形。
+   點一格連到 #s-xxx，site.js 會切到系列檢視並捲到那一組。 */
+.s-wall{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;padding:48px var(--gut) 0}
+.s-cover{position:relative;display:block;aspect-ratio:1/1;overflow:hidden;background:#1d1a17;color:#fff;text-decoration:none}
+.s-cover img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;display:block;transition:transform .5s ease}
+.s-cap{position:absolute;left:0;right:0;bottom:0;padding:56px 16px 14px;
+  background:linear-gradient(to top,rgba(0,0,0,.78) 0,rgba(0,0,0,.52) 46%,rgba(0,0,0,0) 100%);
+  display:flex;flex-direction:column;gap:3px;text-shadow:0 1px 2px rgba(0,0,0,.45)}
+.s-t{font-family:var(--sans);font-size:15px;font-weight:500;line-height:1.45;letter-spacing:.02em;color:#fff;
+  word-break:keep-all;overflow-wrap:anywhere} /* 系列名不從字中間斷（「情慾思／維」），真的放不下才斷 */
+.s-c{font-family:var(--sans);font-size:12.5px;line-height:1.5;letter-spacing:.04em;color:rgba(255,255,255,.86)}
+.s-cover:hover img{transform:scale(1.03)}
+.s-cover:hover .s-t{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.24em}
+.s-cover:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+.s-wall + .filters{padding-top:56px}
+@media (max-width:1100px){
+  .s-wall{grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+}
+@media (max-width:700px){
+  .s-wall{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;padding-top:36px}
+  .s-cap{padding:40px 10px 10px}
+  .s-t{font-size:13.4px;line-height:1.4}
+  .s-c{font-size:12px}
+  .s-wall + .filters{padding-top:44px}
+}
+@media (prefers-reduced-motion:reduce){
+  .s-cover img{transition:none}
+  .s-cover:hover img{transform:none}
+}
