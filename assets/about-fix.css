@@ -1,0 +1,47 @@
+/* 2026-11-25 關於頁健檢修正（Grok 健檢報告急件＋中級；只放關於頁用，about.html／en/about.html 載入）
+   原則：不改字體、字色、版型風格，只修欄寬、點擊範圍、間距、裁切位置 */
+
+/* ── P1-3 平板 701–900：展歷表被左欄擠到地點只剩 128–156px → 改單欄（標題在上、表格全寬） */
+@media (min-width:701px) and (max-width:900px){
+  .about .cols{grid-template-columns:minmax(0,1fr);gap:20px}
+}
+
+/* ── 表格欄寬固定：每張表的欄線對齊；兩欄表（著作與拍賣）年份欄不再被撐寬
+   括號補充（台北）整組不拆行 */
+@media (min-width:701px){
+  .about .cols .table{table-layout:fixed}
+  .about .cols .table td:first-child{width:14%}
+  .about .cols .table td + td{width:43%}
+  .about .cols .table td:nth-child(2):last-child{width:86%}
+  .about .cols .table .sub{white-space:nowrap}
+}
+@media (min-width:1100px){
+  .about .cols .table td:first-child{width:16%}
+  .about .cols .table td + td{width:42%}
+  .about .cols .table td:nth-child(2):last-child{width:84%}
+}
+
+/* ── P2-1 照片：維持 11-25 橘哥定的「同寬 4:5」，只調裁切位置
+   第 1 張（橫幅畫室）左右兩幅畫不被切一半；第 3 張（狗）少裁上方綠意、多裁地磚 */
+.about .photos figure:nth-child(1) img{object-position:45% 50%}
+.about .photos figure:nth-child(3) img{object-position:50% 25%}
+
+/* ── P2-5 四張展歷表之間的空白縮小（原本連續三次 150px，像換頁）；頁尾上距收一點 */
+.about .section:has(.table) + .section:has(.table){padding-top:96px}
+.about .site-foot{margin-top:120px}
+
+@media (max-width:700px){
+  /* ── P1-2 手機主選單：字體、字級、位置都不變，只把每項點擊範圍左右補滿（32→45px 寬、無死區） */
+  .about .nav{column-gap:0}
+  .about .nav > a{padding-left:6.5px;padding-right:6.5px}
+  .about .nav > a:first-of-type{margin-left:-6.5px}
+  /* 語言膠囊：外觀不變，點擊範圍往外擴到 44px 高 */
+  .about .lang.js span[aria-current]{position:relative}
+  .about .lang.js span[aria-current]::before{content:"";position:absolute;inset:-7px -4px}
+  /* 引文出處、表格連結：上下補點擊範圍（行內元素，不推動版面） */
+  .about .quote cite a{padding:13px 0}
+  .about .table a{padding:10px 0}
+
+  .about .section:has(.table) + .section:has(.table){padding-top:64px}
+  .about .site-foot{margin-top:96px}
+}
