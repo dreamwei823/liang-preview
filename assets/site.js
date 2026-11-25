@@ -126,3 +126,26 @@
     td.appendChild(a);td.appendChild(b);
   });
 })();
+
+/* 2026-11-25 聯絡頁「複製信箱」：先用 Clipboard API，再退回 execCommand；兩者都失敗就顯示「請長按信箱複製」並選取信箱，不樂觀顯示成功（做網站憲法 §2.8 第 9 條） */
+(function(){
+  document.querySelectorAll('.copy-mail').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var box=btn.parentNode, ok=box.querySelector('.copy-ok'), ng=box.querySelector('.copy-ng'), v=btn.getAttribute('data-copy'), t;
+      function show(el){ if(ok)ok.hidden=true; if(ng)ng.hidden=true; if(el)el.hidden=false; clearTimeout(btn._t); if(el===ok){btn._t=setTimeout(function(){ok.hidden=true;},2000);} }
+      function fail(){ show(ng); try{var a=document.querySelector('.mail-addr'); if(a){var r=document.createRange(); r.selectNodeContents(a); var s=window.getSelection(); s.removeAllRanges(); s.addRange(r);}}catch(e){} }
+      function legacy(){
+        try{
+          var ta=document.createElement('textarea'); ta.value=v; ta.setAttribute('readonly',''); ta.style.position='fixed'; ta.style.top='0'; ta.style.opacity='0';
+          document.body.appendChild(ta); ta.focus(); ta.select(); ta.setSelectionRange(0,v.length);
+          var done=document.execCommand && document.execCommand('copy'); document.body.removeChild(ta);
+          if(done) show(ok); else fail();
+        }catch(e){ fail(); }
+      }
+      try{
+        if(navigator.clipboard && window.isSecureContext){ navigator.clipboard.writeText(v).then(function(){show(ok);},function(){legacy();}); }
+        else legacy();
+      }catch(e){ legacy(); }
+    });
+  });
+})();

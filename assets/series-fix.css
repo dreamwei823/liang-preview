@@ -2,6 +2,7 @@
    2026-11-25 v3：橘哥看 v2（原比例、大小錯落）說大小很亂，改成同尺寸正方形縮圖的整齊網格。
    正方形裁切是業主指定的例外：別處的作品圖一律不裁，只有這面牆裁。字放圖正下方；新到舊。
    HTML 由 series_wall_20261125.py 產生；改這個檔的版面，連結的 ?v= 要加一。
+   v5：手機切換列右緣加淡出遮罩。
    v4（業主手機實拍後）：切換列只留短名、封面第二行不放件數、篩選列拿掉、手機字級重排。
    點一格連到 #s-xxx，site.js 會切到系列檢視並捲到那一組。 */
 
@@ -19,6 +20,15 @@
 .s-jump a{flex:none;padding:10px 0;color:var(--ink-2);text-decoration:none}
 .s-jump a:first-child{color:var(--ink)}
 .s-jump a + a::before{content:"｜";margin:0 12px;color:var(--line)}
+/* 手機看不出能往右滑：右緣疊一層淡出遮罩（不擋點擊），滑到最右時由頁面上那小段 script 加 .at-end 收掉。
+   沒有 JS 也能用：遮罩只蓋到尾端留白（留白比遮罩寬）。 */
+.s-jumpwrap{position:relative}
+@media (max-width:700px){
+  .s-jumpwrap::after{content:"";position:absolute;top:0;right:0;bottom:0;width:40px;z-index:2;pointer-events:none;
+    background:linear-gradient(to right,rgba(239,234,226,0),var(--bg));transition:opacity .2s ease-out}
+  .s-jumpwrap.at-end::after{opacity:0}
+  .s-jump::after{flex-basis:48px}
+}
 .s-jump a:hover .j-n,.s-jump a:focus-visible .j-n{color:var(--ink);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.28em}
 
 /* 封面牆：電腦 4 欄、平板 3 欄、手機 2 欄，格子一樣大 */
