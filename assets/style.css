@@ -644,3 +644,17 @@ p,li,figcaption,blockquote,dd{text-wrap:pretty}
 }
 /* 手機：年表英文副標排到中文下面，避免「Flower — Form / and Colour」折成空空的兩行 */
 @media (max-width:700px){.road .nm em{display:block;margin:4px 0 0;line-height:1.5}}
+/* ===== 2026-11-25 橘哥：關於頁整體感——寬螢幕右半不留空、欄位標題要一眼看到 ===== */
+.about .cols > div:first-child .label,.about .cols > .text:first-child p.label{font-size:30px;letter-spacing:.06em;padding-top:18px}
+.about .cols > div:first-child .label::before,.about .cols > .text:first-child p.label::before{width:40px}
+@media (min-width:1100px){
+  .about .cols{grid-template-columns:13em minmax(0,1fr);gap:64px}
+  .about .cols > .text:last-child{max-width:none;columns:2;column-gap:64px}
+  .about .cols > .text:last-child p{break-inside:avoid}
+  .about .cols > div:last-child:has(> .quote){display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+  .about .cols > div:last-child > .quote{margin-top:0 !important;max-width:none}
+  .about .cols .table td + td{width:42%}
+}
+@media (max-width:700px){
+  .about .cols > div:first-child .label,.about .cols > .text:first-child p.label{font-size:24px;padding-top:14px}
+}
