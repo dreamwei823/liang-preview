@@ -2,11 +2,15 @@
    2026-11-25 v3：橘哥看 v2（原比例、大小錯落）說大小很亂，改成同尺寸正方形縮圖的整齊網格。
    正方形裁切是業主指定的例外：別處的作品圖一律不裁，只有這面牆裁。字放圖正下方；新到舊。
    HTML 由 series_wall_20261125.py 產生；改這個檔的版面，連結的 ?v= 要加一。
+   v4（業主手機實拍後）：切換列只留短名、封面第二行不放件數、篩選列拿掉、手機字級重排。
    點一格連到 #s-xxx，site.js 會切到系列檢視並捲到那一組。 */
 
-/* 快速切換列：一行、放不下就左右滑 */
+/* 快速切換列：一行、放不下就左右滑。只放系列短名。
+   實心底色＋自己一層：業主在 IG 內建瀏覽器滑動時看到字樣殘影。作品頁沒有 sticky／fixed 元素，
+   最可疑的是這條橫向捲動列（原本透明底，又加了 iOS 慣性捲動屬性，會自成一個合成層），所以補底色、拿掉那個屬性。 */
 .s-jump{display:flex;overflow-x:auto;white-space:nowrap;padding:36px 0 6px var(--gut);font-size:14px;line-height:1.6;
-  scrollbar-width:thin;scrollbar-color:var(--line) transparent;-webkit-overflow-scrolling:touch}
+  position:relative;z-index:1;background:var(--bg);
+  scrollbar-width:thin;scrollbar-color:var(--line) transparent}
 @media (hover:none){ /* 手指滑的裝置不露捲軸；滑鼠的裝置留一條細捲軸才拉得動 */
   .s-jump{scrollbar-width:none}
   .s-jump::-webkit-scrollbar{display:none}
@@ -15,35 +19,38 @@
 .s-jump a{flex:none;padding:10px 0;color:var(--ink-2);text-decoration:none}
 .s-jump a:first-child{color:var(--ink)}
 .s-jump a + a::before{content:"｜";margin:0 12px;color:var(--line)}
-.s-jump .j-y{font-size:13px}
-.s-jump .j-y::before{content:" ("}
-.s-jump .j-y::after{content:")"}
 .s-jump a:hover .j-n,.s-jump a:focus-visible .j-n{color:var(--ink);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.28em}
 
 /* 封面牆：電腦 4 欄、平板 3 欄、手機 2 欄，格子一樣大 */
-.s-wall{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:56px 32px;align-items:start;padding:36px var(--gut) 0}
+.s-wall{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:56px 32px;align-items:start;padding:36px var(--gut) 0;background:var(--bg)}
 .s-cover{display:block;min-width:0;color:var(--ink);text-decoration:none}
 .s-cover img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;object-position:50% 50%;background:var(--line)}
-.s-t{display:block;margin-top:10px;font-family:var(--serif);font-size:20px;font-weight:500;line-height:1.4;letter-spacing:var(--track);
+.s-t{display:block;margin-top:10px;font-family:var(--serif);font-size:20px;font-weight:500;line-height:1.4;letter-spacing:var(--track);color:var(--ink);
   word-break:keep-all;overflow-wrap:anywhere} /* 系列名不從字中間斷，真的放不下才斷 */
 .s-y,.s-n{display:inline-block}
 .s-bar{color:var(--line)}
+.s-sub{margin-left:.35em;font-size:.8em;white-space:nowrap;overflow-wrap:normal} /* 中文名後面的英文副標（偶發 abiogenesis）：整個字不拆 */
+:lang(de) .s-sub,:lang(fr) .s-sub{display:none} /* 德法文的系列名本身就是 Abiogenese／Abiogenèse，不重複 */
 .s-m{display:block;margin-top:4px;font-family:var(--sans);font-size:13px;line-height:1.6;color:var(--ink-2)}
-.s-m span{display:inline-block;white-space:nowrap} /* 斷行只斷在項目之間，不留「件」一個字在下一行 */
-.s-m span:not(:last-child)::after{content:" · ";white-space:pre}
+.s-m span{display:inline-block;white-space:nowrap} /* 斷行只斷在項目之間 */
+.s-m span:not(:last-child)::after{content:" · ";white-space:pre} /* 分隔點掛在前一項後面：只有一項時不會留孤零零的點 */
 :lang(zh) .s-m span:not(:last-child)::after,:lang(ja) .s-m span:not(:last-child)::after{content:"・"}
 .s-cover:hover .s-n{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.24em}
 .s-cover:focus-visible{outline:1px solid var(--ink);outline-offset:6px}
-.s-wall + .filters{padding-top:88px}
+.s-wall + .g-series{padding-top:96px} /* 篩選列拿掉後，封面牆直接接分組格子 */
 
 @media (max-width:1100px){
   .s-wall{grid-template-columns:repeat(3,minmax(0,1fr));gap:48px 28px}
 }
-@media (max-width:700px){
+@media (max-width:700px){ /* 手機兩欄（站上其他格子也是 700 換版，含 640 以下） */
   .s-jump{padding-top:24px}
   .s-wall{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 20px;padding-top:24px}
-  .s-t{font-size:18px}
-  .s-y{display:block} /* 兩欄放不下一行：年份一行、系列名一行，不留「｜」掛在行尾 */
+  /* 封面下三行：年份 12 次文字色／系列名 18 墨色／類型媒材 12 次文字色 */
+  .s-t{font-size:18px;line-height:1.35}
+  .s-y{display:block;font-family:var(--sans);font-size:12px;font-weight:400;line-height:1.5;letter-spacing:.02em;color:var(--ink-2);margin-bottom:2px}
   .s-bar{display:none}
-  .s-wall + .filters{padding-top:64px}
+  .s-n{display:block}
+  .s-sub{display:block;margin-left:0;font-size:14px;line-height:1.35}
+  .s-m{font-size:12px;margin-top:4px}
+  .s-wall + .g-series{padding-top:72px}
 }
