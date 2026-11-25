@@ -5,17 +5,21 @@
 /* 共用 */
 .mo-sec{animation:fadein var(--fade) ease-out both}
 @media (prefers-reduced-motion:reduce){.mo-sec{animation:none}}
-.mo-eye{margin:-10px 0 18px;min-height:42px;font-family:var(--sans);font-size:13px;line-height:1.6;letter-spacing:.12em;color:var(--ink-2);display:flex;gap:.6em;align-items:center}
+.mo-eye{margin:-8px 0 18px;min-height:44px;flex-wrap:wrap;font-family:var(--sans);font-size:13px;line-height:1.6;letter-spacing:.12em;color:var(--ink-2);display:flex;gap:.6em;align-items:center}
 .mo-eye .sl{opacity:.6}
 main .mo-sec img{display:block;width:100%;height:auto}
 main .mo-sec a[target]::after{content:none;display:none}
 .mo-sec a:focus-visible,.yt-poster:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
 
-/* 入口圖示：單色細線，熱區 42×42 */
-.social-icon-link{display:inline-flex;align-items:center;justify-content:center;padding:10px;margin-left:2px;color:#2E2A26;text-decoration:none;transition:opacity .25s ease,transform .25s ease}
-.social-icon-link svg{width:22px;height:22px;display:block}
-@media (hover:hover){.social-icon-link:hover{opacity:.65;transform:translateY(-1px)}}
-.social-icon-link:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+/* 入口標誌：官方樣式（IG 漸層相機、YouTube 紅底白三角），放在眉標前面；點擊範圍 ≥44px */
+.brand-ico{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;margin:0 2px 0 -6px;text-decoration:none;transition:opacity .25s ease}
+.brand-ico .bi{display:block;height:auto}
+.brand-ico .bi-ig{width:30px;height:30px}
+.brand-ico .bi-yt{width:32px;height:22.86px}
+.ig-handle{display:inline-flex;align-items:center;min-height:44px;margin-left:.5em;font-size:14px;letter-spacing:.04em;color:var(--ink);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+@media (hover:hover){.brand-ico:hover{opacity:.8}.ig-handle:hover{text-decoration-thickness:2px}}
+.brand-ico:focus-visible,.ig-handle:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+@media (max-width:768px){.brand-ico .bi-ig{width:26px;height:26px}.brand-ico .bi-yt{width:26px;height:18.57px}}
 
 /* 上半部：不對稱雙欄 38 / 6 / 56 */
 .mo-top{display:grid;grid-template-columns:38fr 56fr;column-gap:6%;align-items:start;padding:72px var(--gut) 0}
