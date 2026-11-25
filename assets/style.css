@@ -717,3 +717,6 @@ main a[target="_blank"]:not(.portal)::after{content:"\2197";font-size:.75em;marg
 /* 2026-11-25 不留殘字：日文作品名原本整字不拆、窄欄被硬斷成只剩「ー」→ 改一般斷行＋長音不放行首＋兩行平均；韓文照詞斷行（不在詞中間斷） */
 html[lang="ja"] .t{word-break:normal;line-break:strict;text-wrap:balance}
 html[lang="ko"] body{word-break:keep-all;overflow-wrap:break-word}
+
+/* 2026-11-25 德法選單較長，手機縮字距避免折成兩行（霞鶩文楷粗體＋描邊後變寬） */
+@media (max-width:700px){html[lang="de"] .nav > a,html[lang="fr"] .nav > a,html[lang="de"] .nav > a:first-of-type,html[lang="fr"] .nav > a:first-of-type{letter-spacing:0;font-size:14px}}
