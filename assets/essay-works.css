@@ -1,4 +1,4 @@
-/* rev 2026-11-25c 藝評單篇：置中＋19px＋防殘字＋行內作品連結＋縮圖區橫排 */
+/* rev 2026-11-25d 藝評單篇：置中＋19px＋防殘字＋行內作品連結＋縮圖區橫排＋系列列可點 */
 /* 2026-11-25 藝評頁：文中提到的作品縮圖、註腳、講座問句（只在藝評頁引入） */
 .essay-works{list-style:none;margin:0 0 8px;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:28px 24px;max-width:46em}
 .essay-works a{display:block;text-decoration:none;color:var(--ink)}
@@ -62,3 +62,17 @@ main:has(> .essay) > .crumb,
 .art-peek img{display:block;width:100%;height:auto}
 @media (hover:none),(pointer:coarse),(max-width:700px){.art-peek{display:none}}
 @media (prefers-reduced-motion:reduce){.art-peek,.essay a.art-link,.essay-works a{transition:none}}
+
+/* 2026-11-25d 「這篇談到的系列」：一列＝56px 方形封面（作品頁封面牆同一張）＋系列名（明體 18px）＋「查看作品 →」；整列可點、無底色框線；滑過或按下系列名浮出底線 */
+.essay-series{display:flex;flex-wrap:wrap;gap:12px 36px;font-family:inherit;font-size:inherit}
+.essay-series li{min-width:0}
+.essay-series a{display:flex;align-items:center;gap:14px;min-height:56px;text-decoration:none;color:var(--ink)}
+.essay-series .sim{flex:0 0 56px;width:56px;height:56px;overflow:hidden;background:var(--line)}
+.essay-series .sim img{display:block;width:100%;height:100%;object-fit:cover}
+.essay-series .stx{display:flex;flex-direction:column;gap:2px;min-width:0}
+.essay-series .sn{font-family:var(--serif);font-weight:500;font-size:18px;line-height:1.4;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.28em;text-decoration-color:transparent;transition:text-decoration-color .2s}
+.essay-series a:hover .sn,.essay-series a:active .sn,.essay-series a:focus-visible .sn{text-decoration-color:var(--ink)}
+.essay-series .go{font-family:var(--sans);font-size:12px;line-height:1.5;color:var(--ink-2)}
+.essay-series .go::after{content:"\00a0\2192"}
+@media (max-width:700px){.essay-series{gap:12px 28px}}
+@media (prefers-reduced-motion:reduce){.essay-series .sn{transition:none}}
