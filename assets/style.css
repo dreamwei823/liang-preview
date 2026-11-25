@@ -740,3 +740,16 @@ main a.social-icon-link[target="_blank"]::after{content:none!important}
 @media (max-width:700px){.social-line{font-size:20px}}
 /* 2026-11-25 英文選單手機：「Collection & Auctions」太長折成 3 排 → 只對英文縮到 14px、字距 0，目標 2 排；中文不動 */
 @media (max-width:700px){html[lang="en"] .nav > a,html[lang="en"] .nav > a[href$="works.html"],html[lang="en"] .nav > a[href$="contact.html"],html[lang="en"] .nav > a:first-of-type{letter-spacing:0;font-size:14px;margin-left:0}}
+/* 2026-11-25 收藏頁：年份拆成 .y；電腦維持名＋年份；手機 ≤700 統一三行：名 17px 主色／年份 12px 次色／收藏類別 12px 次色，類別貼底讓兩欄同列齊平 */
+.coll-page .coll .y{color:#D9D0C3}
+.coll-page .coll .y:empty{display:none}
+@media (max-width:700px){
+  .coll-page .coll li{display:flex}
+  .coll-page .coll a{display:flex;flex-direction:column;width:100%}
+  .coll-page .coll .c{margin-top:12px;font-size:12px}
+  .coll-page .coll .c .t{font-size:17px;line-height:1.45;color:var(--bg)}
+  .coll-page .coll .y{display:block;margin-top:4px;font-size:12px;line-height:1.5;color:#B8AD9E;min-height:1.5em}
+  .coll-page .coll .y:empty{display:block}
+  .coll-page .coll .by{margin-top:auto;padding-top:6px;font-size:12px;letter-spacing:.04em;color:#B8AD9E}
+  .coll-page .coll .px{font-size:12px}
+}
