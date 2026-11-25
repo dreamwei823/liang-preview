@@ -9,11 +9,14 @@
 .ig-card .ig-handle b{font-weight:500;color:var(--ink)}
 .ig-card .ig-go{grid-column:3;grid-row:1/3;display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:999px;background:var(--ink);color:var(--bg);font-size:17px;white-space:nowrap}
 .ig-card .ig-go::after{content:"→";margin-left:.4em}
-.section a.portal.ig-card:hover,.section a.portal.ig-card:focus-visible{background:var(--ink);color:var(--bg)}
-.ig-card:hover .ig-main,.ig-card:focus-visible .ig-main,.ig-card:hover .ig-handle b,.ig-card:focus-visible .ig-handle b{color:var(--bg)}
-.ig-card:hover .ig-handle,.ig-card:focus-visible .ig-handle{color:#D9D0C3}
-.ig-card:hover .ig-ico,.ig-card:focus-visible .ig-ico,.ig-card:hover .ig-go,.ig-card:focus-visible .ig-go{background:var(--bg);color:var(--ink)}
+@media (hover:hover){
+.section a.portal.ig-card:hover{background:var(--ink);color:var(--bg)}
+.ig-card:hover .ig-main,.ig-card:hover .ig-handle b{color:var(--bg)}
+.ig-card:hover .ig-handle{color:#D9D0C3}
+.ig-card:hover .ig-ico,.ig-card:hover .ig-go{background:var(--bg);color:var(--ink)}
+}
 .section a.portal.ig-card:focus-visible{outline:3px solid var(--ink);outline-offset:4px}
+.ig-card:active .ig-go{background:var(--ink-2)}
 @media (max-width:700px){
   .section a.portal.ig-card{grid-template-columns:auto minmax(0,1fr);gap:6px 16px;padding:22px 20px;margin-top:32px}
   .ig-card .ig-ico{grid-row:1;width:56px;height:56px}
