@@ -37,20 +37,22 @@ main .mo-sec a[target]::after{content:none;display:none}
 @media (hover:hover){.yt-fs:hover{color:var(--ink);text-decoration-color:currentColor}}
 
 /* 下方：兩組純文字目錄（不畫格線，靠留白分組） */
-.mo-index{padding-top:96px;padding-bottom:40px;display:grid;grid-template-columns:repeat(2,minmax(0,26em));column-gap:64px;row-gap:64px;align-items:start}
-.ix-eye{margin:0 0 20px;font-family:var(--sans);font-size:12px;letter-spacing:.12em;color:var(--ink-2)}
+.mo-index{padding-top:96px;padding-bottom:40px;display:grid;grid-template-columns:minmax(0,42fr) minmax(0,52fr);column-gap:6%;row-gap:64px;align-items:start}
+.ix-h{display:flex;align-items:center;gap:10px;margin:0 0 24px;padding-bottom:12px;border-bottom:1px solid #D3CABE;font-family:var(--serif);font-weight:500;font-size:22px;line-height:1.4;letter-spacing:.04em;color:var(--ink)}
+.ix-logo{width:18px;height:12.86px;flex:none;display:block}
 .ix{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:24px}
 .ix a{display:flex;flex-direction:column;gap:4px;min-height:44px;color:var(--ink);text-decoration:none}
 .ix-s{font-family:var(--sans);font-size:12px;letter-spacing:.04em;color:var(--ink-2)}
 .ix-s .dot{margin:0 .5em}
-.ix-t{font-family:var(--serif);font-weight:500;font-size:16px;line-height:1.6;word-break:keep-all;overflow-wrap:anywhere;text-underline-offset:4px;text-decoration-thickness:1px}
+.ix-t{font-family:var(--serif);font-weight:500;font-size:16px;line-height:1.6;word-break:keep-all;overflow-wrap:anywhere;text-decoration-line:underline;text-decoration-color:#B8AEA0;text-underline-offset:5px;text-decoration-thickness:1px;transition:text-decoration-color .2s}
 .ix-i{font-size:.85em;color:var(--ink-2)}
-@media (hover:hover){.ix a:hover .ix-t{text-decoration-line:underline}}
-.ix a:active .ix-t{text-decoration-line:underline}
+@media (hover:hover){.ix a:hover .ix-t{text-decoration-color:var(--ink)}}
+.ix a:active .ix-t,.ix a:focus-visible .ix-t{text-decoration-color:var(--ink)}
 
 /* 手機 */
 @media (max-width:768px){
   .mo-index{grid-template-columns:minmax(0,1fr);padding-top:80px}
+  .ix-h{font-size:19px}
 }
 @media (max-width:640px){
   :root{--gut:26px}
