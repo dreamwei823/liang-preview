@@ -1,0 +1,24 @@
+/* 2026-11-25 動態頁 IG 入口：圖示＋中文主句放大＋帳號，整塊大卡片（只給 motion.html 用） */
+.section a.portal.ig-card{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:8px 28px;justify-content:stretch;
+  min-height:120px;padding:32px 36px;margin-top:44px;border:2px solid var(--ink);border-radius:6px;background:#F7F3EC;color:var(--ink);text-decoration:none;
+  transition:background-color .2s ease,color .2s ease}
+.ig-card .ig-ico{grid-row:1/3;display:flex;align-items:center;justify-content:center;width:76px;height:76px;border-radius:50%;background:var(--ink);color:var(--bg)}
+.ig-card .ig-ico svg{width:42px;height:42px;display:block}
+.ig-card .ig-main{grid-column:2;font-family:var(--serif);font-weight:500;font-size:clamp(21px,2.4vw,30px);line-height:1.45;color:var(--ink);word-break:keep-all;overflow-wrap:break-word;text-wrap:balance}
+.ig-card .ig-handle{grid-column:2;font-size:17px;color:var(--ink-2);letter-spacing:.02em}
+.ig-card .ig-handle b{font-weight:500;color:var(--ink)}
+.ig-card .ig-go{grid-column:3;grid-row:1/3;display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:999px;background:var(--ink);color:var(--bg);font-size:17px;white-space:nowrap}
+.ig-card .ig-go::after{content:"→";margin-left:.4em}
+.section a.portal.ig-card:hover,.section a.portal.ig-card:focus-visible{background:var(--ink);color:var(--bg)}
+.ig-card:hover .ig-main,.ig-card:focus-visible .ig-main,.ig-card:hover .ig-handle b,.ig-card:focus-visible .ig-handle b{color:var(--bg)}
+.ig-card:hover .ig-handle,.ig-card:focus-visible .ig-handle{color:#D9D0C3}
+.ig-card:hover .ig-ico,.ig-card:focus-visible .ig-ico,.ig-card:hover .ig-go,.ig-card:focus-visible .ig-go{background:var(--bg);color:var(--ink)}
+.section a.portal.ig-card:focus-visible{outline:3px solid var(--ink);outline-offset:4px}
+@media (max-width:700px){
+  .section a.portal.ig-card{grid-template-columns:auto minmax(0,1fr);gap:6px 16px;padding:22px 20px;margin-top:32px}
+  .ig-card .ig-ico{grid-row:1;width:56px;height:56px}
+  .ig-card .ig-ico svg{width:30px;height:30px}
+  .ig-card .ig-main{grid-column:2;font-size:20px}
+  .ig-card .ig-handle{grid-column:1/-1;font-size:16px;margin-top:6px}
+  .ig-card .ig-go{grid-column:1/-1;grid-row:auto;justify-content:center;margin-top:10px;min-height:52px}
+}

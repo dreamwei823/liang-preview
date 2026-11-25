@@ -707,3 +707,13 @@ main a[target="_blank"]:not(.portal)::after{content:"\2197";font-size:.75em;marg
 @media (max-width:700px){
   .nav > a,.nav > a[href$="works.html"],.nav > a[href$="contact.html"],.nav > a:first-of-type{font-size:15px;letter-spacing:.06em}
 }
+/* 2026-11-25 藝評單篇：整欄置中（原本靠左、1820 寬右邊空一大片）；電腦內文 19px／行高 1.9、欄寬約 38em；標題、摘句、出處同一欄 */
+@media (min-width:701px){
+  main:has(> .essay) > .crumb{max-width:calc(722px + 2 * var(--gut));margin-left:auto;margin-right:auto}
+  .essay{max-width:calc(722px + 2 * var(--gut));margin-left:auto;margin-right:auto}
+  .essay p{max-width:none}
+  .essay .fulltext p{font-size:19px;line-height:1.9}
+}
+/* 2026-11-25 不留殘字：日文作品名原本整字不拆、窄欄被硬斷成只剩「ー」→ 改一般斷行＋長音不放行首＋兩行平均；韓文照詞斷行（不在詞中間斷） */
+html[lang="ja"] .t{word-break:normal;line-break:strict;text-wrap:balance}
+html[lang="ko"] body{word-break:keep-all;overflow-wrap:break-word}
