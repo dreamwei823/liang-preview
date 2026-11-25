@@ -753,3 +753,9 @@ main a.social-icon-link[target="_blank"]::after{content:none!important}
   .coll-page .coll .by{margin-top:auto;padding-top:6px;font-size:12px;letter-spacing:.04em;color:#B8AD9E}
   .coll-page .coll .px{font-size:12px}
 }
+/* 2026-11-25 收藏頁層級：「拍賣紀錄」「部分收藏」同級區塊標題（h2.coll-series 不變）；系列名降一級 h3.coll-group，較小、不加分隔線 */
+.collected .coll-group{font-family:var(--serif);font-weight:500;font-size:19px;line-height:1.5;margin:48px 0 20px;color:var(--bg)}
+.collected .coll-series + .coll-group{margin-top:8px}
+.collected .coll-group a{color:var(--bg);text-decoration:none}
+.collected .coll-group a:hover{text-decoration:underline;text-underline-offset:.3em;text-decoration-thickness:1px}
+@media (max-width:700px){.collected .coll-group{font-size:17px;margin-top:40px}.collected .coll-series + .coll-group{margin-top:8px}}
