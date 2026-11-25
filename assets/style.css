@@ -658,3 +658,45 @@ p,li,figcaption,blockquote,dd{text-wrap:pretty}
 @media (max-width:700px){
   .about .cols > div:first-child .label,.about .cols > .text:first-child p.label{font-size:24px;padding-top:14px}
 }
+/* 2026-11-25 橘哥：表格括號補充拆開（site.js 拆成 .main／.sub）；全站避免孤字 */
+.table .sub::before{content:"（"}
+.table .sub::after{content:"）"}
+html[lang="en"] .table .sub::before,html[lang="de"] .table .sub::before,html[lang="fr"] .table .sub::before{content:" ("}
+html[lang="en"] .table .sub::after,html[lang="de"] .table .sub::after,html[lang="fr"] .table .sub::after{content:")"}
+main p,main blockquote,main td,main li,main figcaption,main cite,main h2,main h3{text-wrap:pretty}
+@media (max-width:700px){
+  .table .main{display:block}
+  .table .sub{display:block;font-size:13px;color:var(--ink-2);margin-top:3px;line-height:1.5}
+  .table .sub::before,.table .sub::after{content:none}
+  .cols .table td + td{font-size:16px}
+  .cols .table td + td + td{font-size:15px}
+}
+/* 2026-11-25 健檢報告 P1/P3：關於頁大標＝藝術家名、小字眉標、導讀段、頁尾導流、外連 ↗ */
+.page-head .eyebrow{font-size:14px;letter-spacing:.16em;color:var(--ink-2);margin:0 0 12px}
+.about .page-head h1 .en{display:block;font-family:var(--serif);font-size:.5em;letter-spacing:.04em;color:var(--ink-2);margin-top:8px}
+.about .cols > .text:last-child p.lead{column-span:all;font-family:var(--serif);font-size:24px;line-height:1.75;max-width:30em;margin:0 0 1.4em;color:var(--ink)}
+.next-links{display:flex;flex-wrap:wrap;gap:16px 48px;padding-top:120px;padding-bottom:40px}
+.next-links a{font-family:var(--serif);font-size:22px;text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:4px}
+.next-links a::after{content:" →"}
+main a[target="_blank"]:not(.portal)::after{content:"\2197";font-size:.75em;margin-left:.15em;vertical-align:.15em;text-decoration:none;display:inline-block}
+@media (max-width:700px){
+  .about .cols > .text:last-child p.lead{font-size:19px}
+  .next-links{padding-top:80px;flex-direction:column}
+  .next-links a{font-size:19px;align-self:flex-start}
+}
+/* 2026-11-25 手機健檢：展歷表年份一欄＋右側展名／地點上下疊；照片橫滑；導覽點擊範圍；頁尾按鈕 */
+@media (max-width:700px){
+  .cols .table tr{display:grid;grid-template-columns:3.4em 1fr;column-gap:12px;padding:14px 0}
+  .cols .table td:first-child{grid-row:1 / span 3;white-space:nowrap;padding:3px 0 0;font-size:14px}
+  .cols .table td + td{grid-column:2}
+  .cols .table td + td + td{margin-top:4px}
+  .nav > a{padding:12px 0;min-height:44px;display:inline-flex;align-items:center}
+  .about .photos{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-right:calc(-1 * var(--gut));padding-right:var(--gut);-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .about .photos::-webkit-scrollbar{display:none}
+  .about .photos figure{flex:0 0 82%;scroll-snap-align:start}
+  .next-links a{align-self:stretch;min-height:48px;display:flex;align-items:center;justify-content:space-between;border:1px solid var(--ink);padding:0 18px;font-size:18px}
+}
+@media (max-width:700px){
+  .cols .table td + td + td .main{display:inline}
+  .cols .table td + td + td .sub{display:inline;margin-left:.6em;font-size:13px}
+}

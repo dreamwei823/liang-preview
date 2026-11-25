@@ -112,3 +112,17 @@
   cur.addEventListener('click',t);
   cur.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();t();}});
 })();
+
+// 2026-11-25 橘哥：表格每筆「主資訊＋括號補充」拆開——手機補充換到下一行變小字，電腦照舊同一行
+(function(){
+  var re=/^([\s\S]*?\S)\s*[（(]([^（）()]+)[）)]\s*$/;
+  document.querySelectorAll('.table td').forEach(function(td){
+    if(td.children.length) return;          // 有連結或其他標籤的格子不動
+    var m=(td.textContent||'').match(re);
+    if(!m) return;
+    td.textContent='';
+    var a=document.createElement('span');a.className='main';a.textContent=m[1];
+    var b=document.createElement('span');b.className='sub';b.textContent=m[2];
+    td.appendChild(a);td.appendChild(b);
+  });
+})();
