@@ -720,3 +720,11 @@ html[lang="ko"] body{word-break:keep-all;overflow-wrap:break-word}
 
 /* 2026-11-25 德法選單較長，手機縮字距避免折成兩行（霞鶩文楷粗體＋描邊後變寬） */
 @media (max-width:700px){html[lang="de"] .nav > a,html[lang="fr"] .nav > a,html[lang="de"] .nav > a:first-of-type,html[lang="fr"] .nav > a:first-of-type{letter-spacing:0;font-size:14px}}
+/* 2026-11-25 去 AI 卡片感（design-delivery-rules 第十節第 2 條）：行動呼籲改純文字＋底線＋→，拿掉框線按鈕、外框卡片、陰影；點擊範圍保持 ≥48px */
+@media (max-width:700px){
+  .next-links a{align-self:flex-start;display:inline-flex;align-items:center;min-height:48px;border:0;padding:0;font-size:19px;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
+}
+.news .portal{display:inline-flex;flex-direction:column;align-items:flex-start;gap:6px;border:0;padding:10px 0;min-height:48px;margin-top:40px}
+.news .portal .big{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
+.news .portal .sm{font-size:13px}
+.book-cover img{box-shadow:none;outline:1px solid var(--line);outline-offset:0}
