@@ -26,8 +26,8 @@ main .mo-sec a[target]::after{content:none;display:none}
 
 /* 01 IG：第一張大、第二張小往右偏移 */
 .ig-ph{margin:0}
-.ph2{width:58%;margin:56px 0 0 auto}
-.ig-main{margin:12px 0 0;max-width:32em;font-family:var(--serif);font-weight:500;font-size:26px;line-height:1.55;letter-spacing:.04em;color:var(--ink);word-break:keep-all;overflow-wrap:break-word;text-wrap:balance}
+.ph2{width:52%;margin:40px 0 0 auto}
+.ig-main{margin:12px 0 0;max-width:32em;font-family:var(--serif);font-weight:500;font-size:20px;line-height:1.55;letter-spacing:.04em;color:var(--ink);word-break:keep-all;overflow-wrap:break-word;text-wrap:balance}
 
 /* 02 創作與生活：主片 16:9，點了才載入 */
 .mo-yt{padding-top:120px}
@@ -44,17 +44,17 @@ main .mo-sec a[target]::after{content:none;display:none}
 .yt-fs{display:inline-flex;align-items:center;min-height:44px;font-family:var(--sans);font-size:13px;color:var(--ink-2);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px;text-decoration-color:var(--line)}
 .yt-fs::after{content:" ↗";white-space:pre}
 @media (hover:hover){.yt-fs:hover{color:var(--ink);text-decoration-color:currentColor}}
-/* 次要兩張：一大一小、錯開 */
-.yt-subs{list-style:none;margin:56px 0 0;padding:0;display:grid;grid-template-columns:minmax(0,54fr) minmax(0,38fr);column-gap:8%;align-items:start}
-.ys2{margin-top:64px}
-.ys a{display:flex;flex-direction:column;gap:10px;color:var(--ink);text-decoration:none}
-.ys-t{font-family:var(--serif);font-weight:500;font-size:20px;line-height:1.5;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px;text-decoration-color:transparent;transition:text-decoration-color .2s}
-.ys-t::after{content:" ↗";font-size:.75em}
-.ys-n{font-family:var(--sans);font-size:13px;color:var(--ink-2);margin-top:-6px}
+/* 次要清單：退一階，小縮圖＋文字列（不跟主片搶） */
+.yt-subs{list-style:none;margin:48px 0 0 12%;padding:0;display:flex;flex-direction:column;gap:20px;max-width:30em}
+.ys a{display:grid;grid-template-columns:112px minmax(0,1fr);column-gap:16px;align-items:center;color:var(--ink);text-decoration:none}
+.ys img{grid-row:1/3}
+.ys-t{align-self:end;font-family:var(--serif);font-weight:500;font-size:16px;line-height:1.5;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px;text-decoration-color:var(--line);transition:text-decoration-color .2s}
+.ys-t::after{content:" ↗";font-size:.8em}
+.ys-n{align-self:start;font-family:var(--sans);font-size:13px;color:var(--ink-2)}
 @media (hover:hover){.ys a:hover .ys-t{text-decoration-color:currentColor}}
 
 /* 03 媒體：下半部全寬目錄條列 */
-.mo-media{padding:140px var(--gut) 40px}
+.mo-media{padding:176px var(--gut) 40px}
 .press{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
 .press li{border-bottom:1px solid var(--line)}
 .press a{display:grid;grid-template-columns:minmax(0,15em) minmax(0,1fr) auto;column-gap:32px;align-items:baseline;padding:28px 0;color:var(--ink);text-decoration:none}
@@ -68,13 +68,12 @@ main .mo-sec a[target]::after{content:none;display:none}
 @media (max-width:768px){
   .mo-top{display:block;padding-top:48px}
   .mo-yt{padding-top:88px}
-  .mo-media{padding-top:88px}
+  .mo-media{padding-top:112px}
   .ph1{width:82%}
   .ph2{width:60%;margin-top:40px}
-  .ig-main{font-size:21px}
-  .yt-subs{grid-template-columns:minmax(0,1fr);row-gap:48px}
-  .ys1{width:78%}
-  .ys2{width:62%;margin:0 0 0 auto}
+  .ig-main{font-size:19px}
+  .yt-subs{margin:40px 0 0;gap:16px}
+  .ys a{grid-template-columns:96px minmax(0,1fr);column-gap:14px}
   .press a{grid-template-columns:minmax(0,1fr) auto;row-gap:6px}
   .pr-s{grid-column:1/-1}
   .pr-t{grid-column:1}
