@@ -56,3 +56,9 @@ html:not([lang="ko"]) .about main p,html:not([lang="ko"]) .about main td,html:no
 /* ── 追加 3：展歷表同一年連續多筆，第二筆起年份隱去（位置保留），像畫冊年表
    由 about-fix.js 依畫面實際順序比對上一列加 .same-yr；螢幕閱讀器照樣念得到 */
 .about .table tr.same-yr td:first-child{color:transparent}
+/* 2026-11-25 英德法選單在手機必定兩行：不加左右點擊補白，第二行才不會縮排歪掉（點擊高度仍 ≥44px） */
+@media (max-width:700px){
+  html[lang="en"] .about .nav,html[lang="de"] .about .nav,html[lang="fr"] .about .nav{column-gap:14px}
+  html[lang="en"] .about .nav > a,html[lang="de"] .about .nav > a,html[lang="fr"] .about .nav > a{padding-left:0;padding-right:0}
+  html[lang="en"] .about .nav > a:first-of-type,html[lang="de"] .about .nav > a:first-of-type,html[lang="fr"] .about .nav > a:first-of-type{margin-left:0}
+}
