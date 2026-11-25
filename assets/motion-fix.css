@@ -1,84 +1,76 @@
-/* 2026-11-25 動態頁（只給 motion.html 用）：去均值感版
-   01 IG 畫冊散點 → 02 創作與生活（主片一大＋三清單小）→ 03 媒體目錄條列
-   規則：不用卡片底色／陰影／膠囊按鈕；圖保留原比例；字級 28／20／13；淡入只用透明度 */
+/* 2026-11-25 動態頁（只給 motion.html 用）：不對稱雙欄版
+   電腦：上半部 01 IG（38%）｜空 6%｜02 創作與生活（56%）；下半部拉開 140px 放 03 媒體全寬目錄條列
+   規則：不用卡片底色／陰影／實心按鈕；圖保留原比例；淡入只用透明度 */
 
-/* 共用：區塊、眉標、淡入 */
-.mo-sec{padding:150px var(--gut) 0;animation:fadein var(--fade) ease-out both}
-.page-head + .mo-sec{padding-top:72px}
-.mo-eye{margin:0 0 36px;font-family:var(--sans);font-size:13px;line-height:1.6;letter-spacing:.12em;color:var(--ink-2);display:flex;gap:.6em;align-items:baseline}
-.mo-eye .sl{opacity:.6}
+/* 共用 */
+.mo-sec{animation:fadein var(--fade) ease-out both}
 @media (prefers-reduced-motion:reduce){.mo-sec{animation:none}}
+.mo-eye{margin:0 0 28px;font-family:var(--sans);font-size:13px;line-height:1.6;letter-spacing:.12em;color:var(--ink-2);display:flex;gap:.6em;align-items:baseline}
+.mo-eye .sl{opacity:.6}
 main .mo-sec img{display:block;width:100%;height:auto}
+main .mo-sec a[target]::after{content:none;display:none}
+.mo-sec a:focus-visible,.yt-poster:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
 
-/* 01 IG：左大圖 58%，右兩張大小不一、上下錯開，底邊不切齊 */
-.ig-grid{display:grid;grid-template-columns:minmax(0,58fr) minmax(0,38fr);grid-template-rows:auto 1fr;column-gap:4%}
+/* 上半部：不對稱雙欄 38 / 6 / 56 */
+.mo-top{display:grid;grid-template-columns:38fr 56fr;column-gap:6%;align-items:start;padding:72px var(--gut) 0}
+
+/* 01 IG：第一張大、第二張小往右偏移 */
 .ig-ph{margin:0}
-.ph1{grid-column:1;grid-row:1}
-.ig-side{grid-column:2;grid-row:1/3}
-.ph2{width:58%;margin:96px 0 0 auto}
-.ph3{width:84%;margin-top:56px}
-.ig-text{grid-column:1;grid-row:2;align-self:start;margin-top:12px;max-width:32em;display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto auto;align-content:start;column-gap:16px;align-items:start}
-.ig-ico{grid-row:1/3;color:var(--ink);padding-top:6px}
-.ig-ico svg{width:34px;height:34px;display:block}
-.ig-main{margin:0;font-family:var(--serif);font-weight:500;font-size:28px;line-height:1.5;letter-spacing:.04em;color:var(--ink);word-break:keep-all;overflow-wrap:break-word;text-wrap:balance}
-.ig-link{margin:6px 0 0;font-family:var(--sans);font-size:13px;letter-spacing:.08em}
-.ig-link a{display:inline-flex;align-items:center;min-height:44px;color:var(--ink);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+.ph2{width:58%;margin:56px 0 0 auto}
+.ig-main{margin:12px 0 0;max-width:32em;font-family:var(--serif);font-weight:500;font-size:26px;line-height:1.55;letter-spacing:.04em;color:var(--ink);word-break:keep-all;overflow-wrap:break-word;text-wrap:balance}
+.ig-link{margin:8px 0 0;font-family:var(--sans);font-size:14px;letter-spacing:.06em}
+.ig-link a{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:var(--ink);text-decoration:none}
+.ig-link a > span:last-child{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+.ig-link a > span:last-child::after{content:" ↗";font-size:.85em}
+.ig-ico svg{width:16px;height:16px;display:block}
 
-/* 02 創作與生活：主片 82% 略偏軸線，清單小卡 45% 交錯 */
-.yt-feat{margin:0 0 0 5%;width:82%}
-.yt-player{position:relative;aspect-ratio:16/9;background:#1c1a17}
+/* 02 創作與生活：主片 16:9，點了才載入 */
+.mo-yt{padding-top:120px}
+.yt-feat{margin:0}
+.yt-player{position:relative;aspect-ratio:16/9;background:#1c1a17;overflow:hidden}
 .yt-player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.yt-poster{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;background:none;cursor:pointer;color:#EFEAE2}
-.yt-poster img{width:100%;height:100%;object-fit:contain}
-.yt-ring{position:absolute;left:50%;top:50%;width:88px;height:88px;margin:-44px 0 0 -44px;transition:opacity .3s ease}
-.yt-ring svg{width:100%;height:100%;display:block}
-.yt-poster:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
-@media (hover:hover){.yt-poster:hover .yt-ring{opacity:.7}}
-.yt-feat figcaption{margin-top:12px;display:flex;flex-direction:column;gap:4px}
+.yt-poster{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;background:none;cursor:pointer;color:#FFFFFF;overflow:hidden}
+.yt-poster img{width:100%;height:100%;object-fit:contain;transition:transform .6s ease}
+.yt-ring{position:absolute;left:50%;top:50%;width:48px;height:48px;margin:-24px 0 0 -24px}
+.yt-ring svg{width:100%;height:100%;display:block;filter:drop-shadow(0 0 6px rgba(0,0,0,.35))}
+@media (hover:hover){.yt-poster:hover img{transform:scale(1.06)}}
+.yt-feat figcaption{margin-top:12px;display:flex;flex-direction:column;gap:2px;align-items:flex-start}
 .yt-ft{font-family:var(--serif);font-weight:500;font-size:20px;line-height:1.5;color:var(--ink)}
-.yt-fs{font-family:var(--sans);font-size:13px;line-height:1.6;color:var(--ink-2)}
-.yt-lists{list-style:none;margin:96px 0 0;padding:0;display:grid;grid-template-columns:minmax(0,45%) minmax(0,45%);column-gap:10%;row-gap:56px}
-.yl2{margin-top:72px}
-.yl a{display:flex;flex-direction:column;gap:10px;color:var(--ink);text-decoration:none}
-main .mo-yt .yl a[target]::after{content:none;display:none}
-.yl-t{font-family:var(--serif);font-weight:500;font-size:20px;line-height:1.5;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px;text-decoration-color:transparent;transition:text-decoration-color .2s}
-.yl-t::after{content:" ↗";font-size:.75em}
-.yl-n{font-family:var(--sans);font-size:13px;color:var(--ink-2);margin-top:-6px}
-@media (hover:hover){.yl a:hover .yl-t{text-decoration-color:currentColor}}
+.yt-fs{display:inline-flex;align-items:center;min-height:44px;font-family:var(--sans);font-size:13px;color:var(--ink-2);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px;text-decoration-color:var(--line)}
+.yt-fs::after{content:" ↗";white-space:pre}
+@media (hover:hover){.yt-fs:hover{color:var(--ink);text-decoration-color:currentColor}}
+/* 次要兩張：一大一小、錯開 */
+.yt-subs{list-style:none;margin:56px 0 0;padding:0;display:grid;grid-template-columns:minmax(0,54fr) minmax(0,38fr);column-gap:8%;align-items:start}
+.ys2{margin-top:64px}
+.ys a{display:flex;flex-direction:column;gap:10px;color:var(--ink);text-decoration:none}
+.ys-t{font-family:var(--serif);font-weight:500;font-size:20px;line-height:1.5;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px;text-decoration-color:transparent;transition:text-decoration-color .2s}
+.ys-t::after{content:" ↗";font-size:.75em}
+.ys-n{font-family:var(--sans);font-size:13px;color:var(--ink-2);margin-top:-6px}
+@media (hover:hover){.ys a:hover .ys-t{text-decoration-color:currentColor}}
 
-/* 03 媒體：雜誌目錄式條列，1px 髮絲線 */
-.mo-media{padding-bottom:40px}
-.press{list-style:none;margin:0;padding:0;max-width:52rem;border-top:1px solid var(--line)}
+/* 03 媒體：下半部全寬目錄條列 */
+.mo-media{padding:140px var(--gut) 40px}
+.press{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
 .press li{border-bottom:1px solid var(--line)}
-.press a{display:grid;grid-template-columns:6em minmax(0,1fr);column-gap:24px;padding:28px 0;color:var(--ink);text-decoration:none}
-main .mo-media .press a[target]::after{content:none;display:none}
-.pr-y{font-family:var(--sans);font-size:13px;letter-spacing:.08em;color:var(--ink-2);padding-top:5px}
-.pr-b{display:flex;flex-direction:column;gap:6px}
-.pr-t{font-family:var(--serif);font-weight:500;font-size:20px;line-height:1.5}
-.pr-t::after{content:" ↗";font-size:.75em}
-.pr-s{font-family:var(--sans);font-size:13px;color:var(--ink-2)}
+.press a{display:grid;grid-template-columns:minmax(0,15em) minmax(0,1fr) auto;column-gap:32px;align-items:baseline;padding:28px 0;color:var(--ink);text-decoration:none}
+.pr-s{font-family:var(--sans);font-size:13px;letter-spacing:.06em;color:var(--ink-2)}
 .pr-s .dot{margin:0 .5em}
-@media (hover:hover){.press a:hover .pr-t{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}}
-.press a:focus-visible,.yl a:focus-visible,.ig-link a:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+.pr-t{word-break:keep-all;overflow-wrap:anywhere;text-wrap:pretty;font-family:var(--serif);font-weight:500;font-size:16px;line-height:1.6;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px;text-decoration-color:var(--line);transition:text-decoration-color .2s}
+.pr-i{font-size:14px;color:var(--ink-2)}
+@media (hover:hover){.press a:hover .pr-t{text-decoration-color:var(--ink)}.press a:hover .pr-i{color:var(--ink)}}
 
-/* 手機 */
-@media (max-width:700px){
-  .mo-sec{padding-top:104px}
-  .page-head + .mo-sec{padding-top:48px}
-  .mo-eye{margin-bottom:24px}
-  .ig-grid{display:block}
-  .ig-side{display:contents}
-  .ph1{width:88%}
-  .ph2{width:68%;margin:48px 0 0 auto}
-  .ph3{width:80%;margin-top:48px}
-  .ig-text{margin-top:12px;column-gap:12px}
-  .ig-ico svg{width:28px;height:28px}
+/* 平板以下：單欄 */
+@media (max-width:768px){
+  .mo-top{display:block;padding-top:48px}
+  .mo-yt{padding-top:88px}
+  .mo-media{padding-top:88px}
+  .ph1{width:82%}
+  .ph2{width:60%;margin-top:40px}
   .ig-main{font-size:21px}
-  .yt-feat{margin:0;width:100%}
-  .yt-ring{width:64px;height:64px;margin:-32px 0 0 -32px}
-  .yt-lists{margin-top:80px;grid-template-columns:minmax(0,1fr);row-gap:48px}
-  .yl1{width:78%}
-  .yl2{width:64%;margin:0 0 0 auto}
-  .yl3{width:72%}
-  .press a{grid-template-columns:3.6em minmax(0,1fr);column-gap:14px}
+  .yt-subs{grid-template-columns:minmax(0,1fr);row-gap:48px}
+  .ys1{width:78%}
+  .ys2{width:62%;margin:0 0 0 auto}
+  .press a{grid-template-columns:minmax(0,1fr) auto;row-gap:6px}
+  .pr-s{grid-column:1/-1}
+  .pr-t{grid-column:1}
 }
