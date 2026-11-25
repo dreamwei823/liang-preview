@@ -703,7 +703,7 @@ main a[target="_blank"]:not(.portal)::after{content:"\2197";font-size:.75em;marg
   .cols .table td + td + td .sub{display:inline;margin-left:.6em;font-size:13px}
 }
 /* 2026-11-25 橘哥＋業主現場選定：上排選單＝霞鶩文楷（LXGW WenKai TC）；招牌字不改。七項同大小等距 */
-.nav > a,.nav > a[href$="works.html"],.nav > a[href$="contact.html"],.nav > a:first-of-type{font-family:'LXGW WenKai TC',var(--sans);font-weight:400;font-size:17px;letter-spacing:.1em;color:var(--ink);margin-left:0;margin-right:0}
+.nav > a,.nav > a[href$="works.html"],.nav > a[href$="contact.html"],.nav > a:first-of-type{font-family:'LXGW WenKai TC',var(--sans);font-weight:700;font-size:17px;letter-spacing:.1em;color:var(--ink);margin-left:0;margin-right:0}
 @media (max-width:700px){
   .nav > a,.nav > a[href$="works.html"],.nav > a[href$="contact.html"],.nav > a:first-of-type{font-size:15px;letter-spacing:.06em}
 }
