@@ -66,7 +66,19 @@
     openBtn.addEventListener('click',open);
     closeBtn.addEventListener('click',close);
     ['mousemove','touchstart','keydown'].forEach(function(e){box.addEventListener(e,wake,{passive:true})});
-    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&box.classList.contains('on'))close();});
+    document.addEventListener('keydown',function(e){
+      if(!box.classList.contains('on'))return;
+      if(e.key==='Escape'){close();return;}
+      /* 2026-11-26 Tab 只在「只看畫」層裡循環，不會跑到被蓋住的頁面 */
+      if(e.key==='Tab'){
+        var f=[].filter.call(box.querySelectorAll('a[href],button,[tabindex]:not([tabindex="-1"])'),function(el){return el.offsetParent!==null||el===closeBtn;});
+        if(!f.length){e.preventDefault();return;}
+        var first=f[0],last=f[f.length-1],a=document.activeElement;
+        if(!box.contains(a)){e.preventDefault();first.focus();}
+        else if(e.shiftKey&&a===first){e.preventDefault();last.focus();}
+        else if(!e.shiftKey&&a===last){e.preventDefault();first.focus();}
+      }
+    });
     box.addEventListener('click',function(e){if(e.target===box||e.target.classList.contains('inner'))close();});
   }
 })();
@@ -148,4 +160,15 @@
       }catch(e){ legacy(); }
     });
   });
+})();
+
+/* 2026-11-26 首頁輪播：橫向捲動裡的圖瀏覽器常常等太晚才載，滑動或頁面載完後就先把整排載好 */
+(function(){
+  var r=document.querySelector('.reel'); if(!r)return;
+  var done=false;
+  function eager(){if(done)return;done=true;[].forEach.call(r.querySelectorAll('img[loading="lazy"]'),function(i){i.loading='eager';});}
+  r.addEventListener('scroll',eager,{passive:true});
+  r.addEventListener('pointerdown',eager,{passive:true});
+  r.addEventListener('focus',eager);
+  if(document.readyState==='complete')setTimeout(eager,1200);else window.addEventListener('load',function(){setTimeout(eager,1200);});
 })();

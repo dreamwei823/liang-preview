@@ -1,0 +1,78 @@
+/* 2026-11-26 技能檢查修改單：第一批（只修毛病）＋第二批（DESIGN §3 定案：點擊範圍、字級、底線、H2）
+   載在每頁所有樣式最後；要退回就把這支的 <link> 拿掉 */
+
+/* ── 1. 鍵盤焦點：2px，只在按 Tab 時出現，滑鼠點擊不會看到 ── */
+a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visible,[role="button"]:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.reel:focus-visible{outline:2px solid var(--ink);outline-offset:-2px}
+.s-cover:focus-visible{outline:2px solid var(--ink);outline-offset:6px}
+/* 動態頁影片封面外層會裁掉外框 → 框畫在內側：外黑內白，壓在任何畫面上都看得到 */
+.yt-poster:focus-visible{outline:3px solid var(--ink);outline-offset:-3px}
+.yt-poster:focus-visible::after{content:"";position:absolute;inset:3px;border:2px solid var(--bg);pointer-events:none;z-index:2}
+/* 深色帶上用淺色框 */
+.collected a:focus-visible,.coll-page a:focus-visible,.dark a:focus-visible{outline-color:var(--bg)}
+
+/* ── 2. 系統設成「減少動態」：全站動畫與轉場都停 ── */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important;scroll-behavior:auto!important}
+  html{scroll-behavior:auto!important}
+}
+
+/* ── 3. 資訊字下限 13px（§3-1、§3-4）── */
+.mt-note{font-size:13px}
+.photo-cap .src{font-size:13px}
+.st-t{font-size:13px}
+.ix-s{font-size:13px}
+.essay-works .sub,.essay-works .y{font-size:13px}
+.essay-series .go{font-size:13px}
+.lang.js span[aria-current]{font-size:13px}
+@media (max-width:700px){
+  .lang.js span[aria-current]{font-size:13px}
+  .reel-hint{font-size:13px}
+  .coll-page .coll .c,.coll-page .coll .y,.coll-page .coll .by,.coll-page .coll .px{font-size:13px}
+  .s-y{font-size:13px}
+  .s-m{font-size:13px}
+}
+
+/* ── 4. H2 章節：電腦 28／手機 22（§3-1）── */
+.essay .fulltext h2.sec,.text h2{font-size:28px}
+.ix-h{font-size:28px}
+.coll-series,.collected .coll-series{font-size:28px}
+.cols > div:first-child .label,.cols > .text:first-child p.label{font-size:28px}
+@media (max-width:700px){
+  .essay .fulltext h2.sec,.text h2{font-size:22px}
+  .ix-h{font-size:22px}
+  .coll-series,.collected .coll-series{font-size:22px}
+  .cols > div:first-child .label,.cols > .text:first-child p.label{font-size:22px}
+}
+
+/* ── 5. 底線（§3-3）：動態頁清單底線加深到 3:1 以上 ── */
+.ix-t{text-decoration-color:#8C8175}
+/* 首頁「看動態」「在誠品線上看這本書」：細框改成跟全站一樣的底線 */
+.feature .go{border-bottom:0;padding-bottom:0;text-decoration-line:underline;text-decoration-color:var(--ink);text-decoration-thickness:1px;text-underline-offset:.28em}
+
+/* ── 6. 手機點擊範圍 ≥44px（§3-3）：外觀和位置不變，只往外擴可點的區域 ── */
+@media (max-width:700px){
+  /* 選單：左右補滿，字距看起來一樣（正式站間距 13px＝兩邊各 6.5px，跟關於頁原本的補丁同值） */
+  .nav{column-gap:0}
+  .nav > a{padding-left:6.5px;padding-right:6.5px}
+  .nav > a:first-of-type{margin-left:-6.5px}
+  /* 語言膠囊：外觀不變，可點範圍往上下左右擴到 44px 以上 */
+  .lang.js span[aria-current]{position:relative}
+  .lang.js span[aria-current]::before{content:"";position:absolute;inset:-7px -6px}
+  .lang.js.open a{position:relative}
+  .lang.js.open a::before{content:"";position:absolute;left:-4px;right:-4px;top:50%;height:44px;transform:translateY(-50%)}
+}
+/* 獨立連結：疊一層透明點擊區，不加內距、不推動版面 */
+.mail-addr,.all-coll a,.doors-note a,.feature .go,.social-line a:not(.social-icon-link){position:relative}
+.mail-addr::before,.all-coll a::before,.doors-note a::before,.feature .go::before,.social-line a:not(.social-icon-link)::before{content:"";position:absolute;left:-4px;right:-4px;top:50%;height:44px;transform:translateY(-50%)}
+/* 麵包屑兩字項目：上下左右都補到 44px */
+.crumb a{position:relative}
+.crumb a::before{content:"";position:absolute;inset:-13px -9px}
+/* 藝評「梁至青部落格轉載」這類單獨成段的外部連結 */
+.essay p > a:only-child{position:relative}
+.essay p > a:only-child::before{content:"";position:absolute;left:0;right:0;top:50%;height:44px;transform:translateY(-50%)}
+.skip:focus{padding:12px 14px}
+/* 作品頁「散步｜系列」切換鈕、收藏頁系列標題連結：補到 44px */
+.speed button,.coll-group a{position:relative}
+.speed button::before{content:"";position:absolute;inset:-4px -7px}
+.coll-group a::before{content:"";position:absolute;inset:-10px -5px}
